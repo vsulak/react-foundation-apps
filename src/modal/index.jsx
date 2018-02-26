@@ -2,43 +2,46 @@ var React = require('react');
 var Animation = require('../utils/animation');
 var foundationApi = require('../utils/foundation-api');
 
-var Modal = React.createClass({
-  getInitialState: function () {
-    return { open: false };
-  },
-  getDefaultProps: function () {
-    return {
-      overlay: true,
-      overlayClose: true,
-      animationIn: 'fadeIn',
-      animationOut: 'fadeOut',
-      onClose: null
-    };
-  },
-  componentDidMount: function () {
+class Modal extends React.Component {
+  static defaultProps = {
+    overlay: true,
+    overlayClose: true,
+    animationIn: 'fadeIn',
+    animationOut: 'fadeOut',
+    onClose: null
+  };
+
+  state = { open: false };
+
+  componentDidMount() {
     this.subscribe(this.props.id);
-  },
-  componentWillUnmount: function () {
+  }
+
+  componentWillUnmount() {
     foundationApi.unsubscribe(this.props.id);
-  },
-  componentWillReceiveProps: function (nextProps) {
+  }
+
+  componentWillReceiveProps(nextProps) {
     if (nextProps.id !== this.props.id) {
       foundationApi.unsubscribe(this.props.id);
       this.subscribe(nextProps.id);
     }
-  },
-  hideOverlay: function (e) {
+  }
+
+  hideOverlay = (e) => {
     e.preventDefault();
     if (this.props.overlayClose) {
       this.setState({open: false});
       if (this.props.onClose) this.props.onClose();
     }
-  },
-  stopClickPropagation: function (e) {
+  };
+
+  stopClickPropagation = (e) => {
     e.preventDefault();
     e.stopPropagation();
-  },
-  subscribe: function (id) {
+  };
+
+  subscribe = (id) => {
     foundationApi.subscribe(id, function (name, msg) {
       if (msg === 'open') {
         this.setState({open: true});
@@ -50,8 +53,9 @@ var Modal = React.createClass({
         if (!this.state.open && this.props.onClose) this.props.onClose();
       }
     }.bind(this));
-  },
-  render: function() {
+  };
+
+  render() {
     var overlayStyle = {};
     if (!this.props.overlay) {
       overlayStyle.background = 'transparent';
@@ -71,7 +75,7 @@ var Modal = React.createClass({
         </div>
       </Animation>
     );
-  },
-});
+  }
+}
 
 module.exports = Modal;
