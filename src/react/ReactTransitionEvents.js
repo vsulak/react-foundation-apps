@@ -9,9 +9,9 @@
 
 'use strict';
 
-var ExecutionEnvironment = require('ExecutionEnvironment');
+import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment';
 
-var getVendorPrefixedEventName = require('getVendorPrefixedEventName');
+import getVendorPrefixedEventName from './getVendorPrefixedEventName';
 
 var endEvents = [];
 
