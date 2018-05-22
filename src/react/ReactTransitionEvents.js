@@ -45,7 +45,7 @@ function removeEventListener(node, eventName, eventListener) {
   node.removeEventListener(eventName, eventListener, false);
 }
 
-var ReactTransitionEvents = {
+const ReactTransitionEvents = {
   addEndEventListener: function(node, eventListener) {
     if (endEvents.length === 0) {
       // If CSS transitions are not supported, trigger an "end animation"
@@ -68,4 +68,4 @@ var ReactTransitionEvents = {
   },
 };
 
-module.exports = ReactTransitionEvents;
+export default ReactTransitionEvents;

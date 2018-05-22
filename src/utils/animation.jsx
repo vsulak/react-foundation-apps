@@ -1,7 +1,7 @@
 // some parts of code from react/lib/ReactCSSTransitionGroupChild.js
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ReactTransitionEvents = require('../react/ReactTransitionEvents');
+import ReactTransitionEvents from '../react/ReactTransitionEvents';
 var CSSCore = require('./csscore');
 
 var classnames = require('classnames');
