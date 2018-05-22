@@ -75,4 +75,4 @@ class Animation extends React.Component {
   }
 }
 
-module.exports = Animation;
+export default Animation;

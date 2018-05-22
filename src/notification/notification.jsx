@@ -34,4 +34,4 @@ class Notification extends React.Component {
   }
 }
 
-module.exports = Notification;
+export default Notification;

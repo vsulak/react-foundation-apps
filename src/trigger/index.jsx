@@ -67,4 +67,4 @@ class Trigger extends React.Component {
   }
 }
 
-module.exports = Trigger;
+export default Trigger;

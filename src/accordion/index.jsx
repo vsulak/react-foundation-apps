@@ -2,7 +2,7 @@ var React = require('react');
 
 
 class Accordion extends React.Component {
-  static defaultProps = { 
+  static defaultProps = {
     autoOpen: true,
     multiOpen: false,
     collapsible: false
@@ -52,5 +52,5 @@ class Accordion extends React.Component {
   }
 }
 
-module.exports = Accordion;
+export default Accordion;
 Accordion.Item = require('./item');

@@ -29,5 +29,5 @@ class Tabs extends React.Component {
   }
 }
 
-module.exports = Tabs;
+export default Tabs;
 Tabs.Tab = require('./tab');

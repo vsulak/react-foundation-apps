@@ -61,6 +61,6 @@ class ActionSheet extends React.Component {
   }
 }
 
-module.exports = ActionSheet;
+export default ActionSheet;
 ActionSheet.Button = require('./button');
 ActionSheet.Content = require('./content');

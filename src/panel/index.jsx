@@ -31,7 +31,7 @@ class Panel extends React.Component {
     var classes = 'panel panel-' + this.props.position;
     if (this.props.className) {
       classes += ' ' + this.props.className;
-    } 
+    }
     if(this.props.position === 'left') {
       animationIn  = this.props.animationIn || 'slideInRight';
       animationOut = this.props.animationOut || 'slideOutLeft';
@@ -55,4 +55,4 @@ class Panel extends React.Component {
   }
 }
 
-module.exports = Panel;
+export default Panel;
