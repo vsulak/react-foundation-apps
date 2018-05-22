@@ -1,16 +1,16 @@
 var React = require('react');
 
 
-var Tabs = React.createClass({
-  getInitialState: function () {
-    return {
-      selectedTab: 0
-    };
-  },
-  selectTab: function (options) {
+class Tabs extends React.Component {
+  state = {
+    selectedTab: 0
+  };
+
+  selectTab = (options) => {
     this.setState(options);
-  },
-  render: function () {
+  };
+
+  render() {
     var content = null;
     var children = React.Children.map(this.props.children, function (child, index) {
       if(index === this.state.selectedTab) content = child.props.children;
@@ -27,7 +27,7 @@ var Tabs = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Tabs;
 Tabs.Tab = require('./tab');

@@ -1,15 +1,15 @@
 var React = require('react');
 var classnames = require('classnames');
 
-var Tab = React.createClass({
-
-  select: function () {
+class Tab extends React.Component {
+  select = () => {
     var options = {
       selectedTab: this.props.index
     };
     this.props.selectTab(options);
-  },
-  render: function () {
+  };
+
+  render() {
     var classes = {
       'tab-item': true,
       'is-active': this.props.active
@@ -20,6 +20,6 @@ var Tab = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Tab;
