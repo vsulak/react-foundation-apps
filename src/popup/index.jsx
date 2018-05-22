@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var classnames = require('classnames');
-var ExecutionEnvironment = require('react/lib/ExecutionEnvironment');
+var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
 var foundationApi = require('../utils/foundation-api');
 var Tether = ExecutionEnvironment.canUseDOM && require('tether/tether');
 

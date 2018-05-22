@@ -1,7 +1,7 @@
 var React = require('react');
 var Router = require('react-router');
 var routes = require('./routes');
-var ExecutionEnvironment = require('react/lib/ExecutionEnvironment');
+var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
 
 if (ExecutionEnvironment.canUseDOM) {
   document.addEventListener('DOMContentLoaded', function () {
@@ -9,4 +9,4 @@ if (ExecutionEnvironment.canUseDOM) {
       React.render(<Handler/>, document.body);
     });
   });
-} 
+}
