@@ -52,211 +52,343 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = {
 	  Accordion: __webpack_require__(1),
-	  ActionSheet: __webpack_require__(4),
-	  Iconic: __webpack_require__(10),
-	  Interchange: __webpack_require__(11),
-	  Modal: __webpack_require__(17),
-	  Notification: __webpack_require__(22),
-	  OffCanvas: __webpack_require__(26),
-	  Panel: __webpack_require__(27),
-	  Popup: __webpack_require__(28),
-	  Tabs: __webpack_require__(30),
-	  Trigger: __webpack_require__(32),
+	  ActionSheet: __webpack_require__(5),
+	  Iconic: __webpack_require__(12),
+	  Interchange: __webpack_require__(14),
+	  Modal: __webpack_require__(24),
+	  Notification: __webpack_require__(29),
+	  OffCanvas: __webpack_require__(33),
+	  Panel: __webpack_require__(34),
+	  Popup: __webpack_require__(35),
+	  Tabs: __webpack_require__(37),
+	  Trigger: __webpack_require__(39),
 	};
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var React = __webpack_require__(2);
-
-	var Accordion = React.createClass({
-	  displayName: 'Accordion',
-
-	  getInitialState: function getInitialState() {
-	    return { sections: [] };
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      autoOpen: true,
-	      multiOpen: false,
-	      collapsible: false
-	    };
-	  },
-	  componentWillMount: function componentWillMount() {
-	    var sections = [];
-	    React.Children.forEach(this.props.children, function (child, index) {
-	      sections.push({ active: false });
-	    });
-	    if (this.props.autoOpen) {
-	      sections[0].active = true;
-	    }
-	    this.setState({ sections: sections });
-	  },
-	  select: function select(selectSection) {
-	    var sections = this.state.sections;
-	    sections.forEach((function (section, index) {
-	      if (this.props.multiOpen) {
-	        if (index === selectSection) {
-	          section.active = !section.active;
-	        }
-	      } else {
-	        if (index === selectSection) {
-	          section.active = this.props.collapsible === true ? !section.active : true;
-	        } else {
-	          section.active = false;
-	        }
-	      }
-	    }).bind(this));
-	    this.setState({ sections: sections });
-	  },
-	  render: function render() {
-	    var children = React.Children.map(this.props.children, (function (child, index) {
-	      return React.cloneElement(child, {
-	        active: this.state.sections[index] ? this.state.sections[index].active : false,
-	        activate: this.select.bind(this, index)
-	      });
-	    }).bind(this));
-	    return React.createElement(
-	      'div',
-	      { className: 'accordion' },
-	      children
-	    );
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = Accordion;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(2);
+
+	var Accordion = function (_React$Component) {
+	  _inherits(Accordion, _React$Component);
+
+	  function Accordion() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Accordion);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Accordion.__proto__ || Object.getPrototypeOf(Accordion)).call.apply(_ref, [this].concat(args))), _this), _this.state = { sections: [] }, _this.select = function (selectSection) {
+	      var sections = _this.state.sections;
+	      sections.forEach(function (section, index) {
+	        if (this.props.multiOpen) {
+	          if (index === selectSection) {
+	            section.active = !section.active;
+	          }
+	        } else {
+	          if (index === selectSection) {
+	            section.active = this.props.collapsible === true ? !section.active : true;
+	          } else {
+	            section.active = false;
+	          }
+	        }
+	      }.bind(_this));
+	      _this.setState({ sections: sections });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Accordion, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var sections = [];
+	      React.Children.forEach(this.props.children, function (child, index) {
+	        sections.push({ active: false });
+	      });
+	      if (this.props.autoOpen) {
+	        sections[0].active = true;
+	      }
+	      this.setState({ sections: sections });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var children = React.Children.map(this.props.children, function (child, index) {
+	        return React.cloneElement(child, {
+	          active: this.state.sections[index] ? this.state.sections[index].active : false,
+	          activate: this.select.bind(this, index)
+	        });
+	      }.bind(this));
+	      return React.createElement(
+	        'div',
+	        { className: 'accordion' },
+	        children
+	      );
+	    }
+	  }]);
+
+	  return Accordion;
+	}(React.Component);
+
+	Accordion.defaultProps = {
+	  autoOpen: true,
+	  multiOpen: false,
+	  collapsible: false
+	};
+	exports.default = Accordion;
+
 	Accordion.Item = __webpack_require__(3);
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var classnames = __webpack_require__(4);
 
-	var AccordionItem = React.createClass({
-	  displayName: 'AccordionItem',
+	var AccordionItem = function (_React$Component) {
+	  _inherits(AccordionItem, _React$Component);
 
-	  render: function render() {
-	    var itemClasses = {
-	      'accordion-item': true,
-	      'is-active': this.props.active
-	    };
-	    return React.createElement(
-	      'div',
-	      { className: classnames(itemClasses) },
-	      React.createElement(
-	        'div',
-	        { className: 'accordion-title', onClick: this.props.activate },
-	        this.props.title
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'accordion-content' },
-	        this.props.children
-	      )
-	    );
+	  function AccordionItem() {
+	    _classCallCheck(this, AccordionItem);
+
+	    return _possibleConstructorReturn(this, (AccordionItem.__proto__ || Object.getPrototypeOf(AccordionItem)).apply(this, arguments));
 	  }
-	});
+
+	  _createClass(AccordionItem, [{
+	    key: 'render',
+	    value: function render() {
+	      var itemClasses = {
+	        'accordion-item': true,
+	        'is-active': this.props.active
+	      };
+	      return React.createElement(
+	        'div',
+	        { className: classnames(itemClasses) },
+	        React.createElement(
+	          'div',
+	          { className: 'accordion-title', onClick: this.props.activate },
+	          this.props.title
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'accordion-content' },
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return AccordionItem;
+	}(React.Component);
 
 	module.exports = AccordionItem;
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var React = __webpack_require__(2);
-	var foundationApi = __webpack_require__(5);
-
-	var ActionSheet = React.createClass({
-	  displayName: 'ActionSheet',
-
-	  getInitialState: function getInitialState() {
-	    return { active: false };
-	  },
-	  setActiveState: function setActiveState(active) {
-	    this.setState({ active: active });
-	  },
-	  onBodyClick: function onBodyClick(e) {
-	    var el = e.target;
-	    var insideActionSheet = false;
-
-	    do {
-	      if (el.classList && el.classList.contains('action-sheet-container') && el.id === this.props.id) {
-	        insideActionSheet = true;
-	        break;
-	      }
-	    } while (el = el.parentNode);
-
-	    if (!insideActionSheet) {
-	      this.setActiveState(false);
-	    }
-	  },
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.id) {
-	      foundationApi.subscribe(this.props.id, (function (name, msg) {
-	        if (msg === 'open') {
-	          this.setState({ active: true });
-	        } else if (msg === 'close') {
-	          this.setState({ active: false });
-	        } else if (msg === 'toggle') {
-	          this.setState({ active: !this.state.active });
-	        }
-	      }).bind(this));
-	    }
-	    document.body.addEventListener('click', this.onBodyClick);
-	  },
-	  componentWillUnmount: function componentWillUnmount() {
-	    if (this.props.id) foundationApi.unsubscribe(this.props.id);
-	    document.body.removeEventListener('click', this.onBodyClick);
-	  },
-	  render: function render() {
-	    var children = React.Children.map(this.props.children, (function (child, index) {
-	      var extraProps = { active: this.state.active };
-	      if (child.type.displayName === 'ActionSheetButton') {
-	        extraProps.setActiveState = this.setActiveState;
-	      }
-	      return React.cloneElement(child, extraProps);
-	    }).bind(this));
-	    return React.createElement(
-	      'div',
-	      { id: this.props.id, 'data-closable': true, className: 'action-sheet-container' },
-	      children
-	    );
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = ActionSheet;
-	ActionSheet.Button = __webpack_require__(8);
-	ActionSheet.Content = __webpack_require__(9);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	//From https://github.com/zurb/foundation-apps/blob/master/js/angular/common/common.services.js
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(2);
+	var foundationApi = __webpack_require__(6);
+
+	var ActionSheet = function (_React$Component) {
+	  _inherits(ActionSheet, _React$Component);
+
+	  function ActionSheet() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, ActionSheet);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ActionSheet.__proto__ || Object.getPrototypeOf(ActionSheet)).call.apply(_ref, [this].concat(args))), _this), _this.state = { active: false }, _this.setActiveState = function (active) {
+	      _this.setState({ active: active });
+	    }, _this.onBodyClick = function (e) {
+	      var el = e.target;
+	      var insideActionSheet = false;
+
+	      do {
+	        if (el.classList && el.classList.contains('action-sheet-container') && el.id === _this.props.id) {
+	          insideActionSheet = true;
+	          break;
+	        }
+	      } while (el = el.parentNode);
+
+	      if (!insideActionSheet) {
+	        _this.setActiveState(false);
+	      }
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(ActionSheet, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.id) {
+	        foundationApi.subscribe(this.props.id, function (name, msg) {
+	          if (msg === 'open') {
+	            this.setState({ active: true });
+	          } else if (msg === 'close') {
+	            this.setState({ active: false });
+	          } else if (msg === 'toggle') {
+	            this.setState({ active: !this.state.active });
+	          }
+	        }.bind(this));
+	      }
+	      document.body.addEventListener('click', this.onBodyClick);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      if (this.props.id) foundationApi.unsubscribe(this.props.id);
+	      document.body.removeEventListener('click', this.onBodyClick);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var children = React.Children.map(this.props.children, function (child, index) {
+	        var extraProps = { active: this.state.active };
+	        if (child.type.displayName === 'ActionSheetButton') {
+	          extraProps.setActiveState = this.setActiveState;
+	        }
+	        return React.cloneElement(child, extraProps);
+	      }.bind(this));
+	      return React.createElement(
+	        'div',
+	        { id: this.props.id, 'data-closable': true, className: 'action-sheet-container' },
+	        children
+	      );
+	    }
+	  }]);
+
+	  return ActionSheet;
+	}(React.Component);
+
+	exports.default = ActionSheet;
+
+	ActionSheet.Button = __webpack_require__(10);
+	ActionSheet.Content = __webpack_require__(11);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var PubSub = __webpack_require__(6);
-	var assign = __webpack_require__(7);
+	//From https://github.com/zurb/foundation-apps/blob/master/js/angular/common/common.services.js
+	var PubSub = __webpack_require__(7);
+	var assign = __webpack_require__(9);
 
 	var listeners = [];
 	var settings = {};
@@ -301,200 +433,220 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = foundationApi;
 
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+	/* WEBPACK VAR INJECTION */(function(module) {/*
 	Copyright (c) 2010,2011,2012,2013,2014 Morgan Roderick http://roderick.dk
 	License: MIT - http://mrgnrdrck.mit-license.org
 
 	https://github.com/mroderick/PubSubJS
 	*/
 	(function (root, factory){
-		'use strict';
+	    'use strict';
 
-	    if (true){
-	        // AMD. Register as an anonymous module.
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-	    } else if (typeof exports === 'object'){
-	        // CommonJS
-	        factory(exports);
-
-	    }
-
-	    // Browser globals
 	    var PubSub = {};
 	    root.PubSub = PubSub;
+
+	    var define = root.define;
+
 	    factory(PubSub);
-	    
+
+	    // AMD support
+	    if (typeof define === 'function' && define.amd){
+	        define(function() { return PubSub; });
+
+	        // CommonJS and Node.js module support
+	    } else if (true){
+	        if (module !== undefined && module.exports) {
+	            exports = module.exports = PubSub; // Node.js specific `module.exports`
+	        }
+	        exports.PubSub = PubSub; // CommonJS module 1.1.1 spec
+	        module.exports = exports = PubSub; // CommonJS
+	    }
+
 	}(( typeof window === 'object' && window ) || this, function (PubSub){
-		'use strict';
+	    'use strict';
 
-		var messages = {},
-			lastUid = -1;
+	    var messages = {},
+	        lastUid = -1;
 
-		function hasKeys(obj){
-			var key;
+	    function hasKeys(obj){
+	        var key;
 
-			for (key in obj){
-				if ( obj.hasOwnProperty(key) ){
-					return true;
-				}
-			}
-			return false;
-		}
+	        for (key in obj){
+	            if ( obj.hasOwnProperty(key) ){
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
 
-		/**
+	    /**
 		 *	Returns a function that throws the passed exception, for use as argument for setTimeout
 		 *	@param { Object } ex An Error object
 		 */
-		function throwException( ex ){
-			return function reThrowException(){
-				throw ex;
-			};
-		}
+	    function throwException( ex ){
+	        return function reThrowException(){
+	            throw ex;
+	        };
+	    }
 
-		function callSubscriberWithDelayedExceptions( subscriber, message, data ){
-			try {
-				subscriber( message, data );
-			} catch( ex ){
-				setTimeout( throwException( ex ), 0);
-			}
-		}
+	    function callSubscriberWithDelayedExceptions( subscriber, message, data ){
+	        try {
+	            subscriber( message, data );
+	        } catch( ex ){
+	            setTimeout( throwException( ex ), 0);
+	        }
+	    }
 
-		function callSubscriberWithImmediateExceptions( subscriber, message, data ){
-			subscriber( message, data );
-		}
+	    function callSubscriberWithImmediateExceptions( subscriber, message, data ){
+	        subscriber( message, data );
+	    }
 
-		function deliverMessage( originalMessage, matchedMessage, data, immediateExceptions ){
-			var subscribers = messages[matchedMessage],
-				callSubscriber = immediateExceptions ? callSubscriberWithImmediateExceptions : callSubscriberWithDelayedExceptions,
-				s;
+	    function deliverMessage( originalMessage, matchedMessage, data, immediateExceptions ){
+	        var subscribers = messages[matchedMessage],
+	            callSubscriber = immediateExceptions ? callSubscriberWithImmediateExceptions : callSubscriberWithDelayedExceptions,
+	            s;
 
-			if ( !messages.hasOwnProperty( matchedMessage ) ) {
-				return;
-			}
+	        if ( !messages.hasOwnProperty( matchedMessage ) ) {
+	            return;
+	        }
 
-			for (s in subscribers){
-				if ( subscribers.hasOwnProperty(s)){
-					callSubscriber( subscribers[s], originalMessage, data );
-				}
-			}
-		}
+	        for (s in subscribers){
+	            if ( subscribers.hasOwnProperty(s)){
+	                callSubscriber( subscribers[s], originalMessage, data );
+	            }
+	        }
+	    }
 
-		function createDeliveryFunction( message, data, immediateExceptions ){
-			return function deliverNamespaced(){
-				var topic = String( message ),
-					position = topic.lastIndexOf( '.' );
+	    function createDeliveryFunction( message, data, immediateExceptions ){
+	        return function deliverNamespaced(){
+	            var topic = String( message ),
+	                position = topic.lastIndexOf( '.' );
 
-				// deliver the message as it is now
-				deliverMessage(message, message, data, immediateExceptions);
+	            // deliver the message as it is now
+	            deliverMessage(message, message, data, immediateExceptions);
 
-				// trim the hierarchy and deliver message to each level
-				while( position !== -1 ){
-					topic = topic.substr( 0, position );
-					position = topic.lastIndexOf('.');
-					deliverMessage( message, topic, data, immediateExceptions );
-				}
-			};
-		}
+	            // trim the hierarchy and deliver message to each level
+	            while( position !== -1 ){
+	                topic = topic.substr( 0, position );
+	                position = topic.lastIndexOf('.');
+	                deliverMessage( message, topic, data, immediateExceptions );
+	            }
+	        };
+	    }
 
-		function messageHasSubscribers( message ){
-			var topic = String( message ),
-				found = Boolean(messages.hasOwnProperty( topic ) && hasKeys(messages[topic])),
-				position = topic.lastIndexOf( '.' );
+	    function messageHasSubscribers( message ){
+	        var topic = String( message ),
+	            found = Boolean(messages.hasOwnProperty( topic ) && hasKeys(messages[topic])),
+	            position = topic.lastIndexOf( '.' );
 
-			while ( !found && position !== -1 ){
-				topic = topic.substr( 0, position );
-				position = topic.lastIndexOf( '.' );
-				found = Boolean(messages.hasOwnProperty( topic ) && hasKeys(messages[topic]));
-			}
+	        while ( !found && position !== -1 ){
+	            topic = topic.substr( 0, position );
+	            position = topic.lastIndexOf( '.' );
+	            found = Boolean(messages.hasOwnProperty( topic ) && hasKeys(messages[topic]));
+	        }
 
-			return found;
-		}
+	        return found;
+	    }
 
-		function publish( message, data, sync, immediateExceptions ){
-			var deliver = createDeliveryFunction( message, data, immediateExceptions ),
-				hasSubscribers = messageHasSubscribers( message );
+	    function publish( message, data, sync, immediateExceptions ){
+	        var deliver = createDeliveryFunction( message, data, immediateExceptions ),
+	            hasSubscribers = messageHasSubscribers( message );
 
-			if ( !hasSubscribers ){
-				return false;
-			}
+	        if ( !hasSubscribers ){
+	            return false;
+	        }
 
-			if ( sync === true ){
-				deliver();
-			} else {
-				setTimeout( deliver, 0 );
-			}
-			return true;
-		}
+	        if ( sync === true ){
+	            deliver();
+	        } else {
+	            setTimeout( deliver, 0 );
+	        }
+	        return true;
+	    }
 
-		/**
+	    /**
 		 *	PubSub.publish( message[, data] ) -> Boolean
 		 *	- message (String): The message to publish
 		 *	- data: The data to pass to subscribers
 		 *	Publishes the the message, passing the data to it's subscribers
 		**/
-		PubSub.publish = function( message, data ){
-			return publish( message, data, false, PubSub.immediateExceptions );
-		};
+	    PubSub.publish = function( message, data ){
+	        return publish( message, data, false, PubSub.immediateExceptions );
+	    };
 
-		/**
+	    /**
 		 *	PubSub.publishSync( message[, data] ) -> Boolean
 		 *	- message (String): The message to publish
 		 *	- data: The data to pass to subscribers
 		 *	Publishes the the message synchronously, passing the data to it's subscribers
 		**/
-		PubSub.publishSync = function( message, data ){
-			return publish( message, data, true, PubSub.immediateExceptions );
-		};
+	    PubSub.publishSync = function( message, data ){
+	        return publish( message, data, true, PubSub.immediateExceptions );
+	    };
 
-		/**
+	    /**
 		 *	PubSub.subscribe( message, func ) -> String
 		 *	- message (String): The message to subscribe to
 		 *	- func (Function): The function to call when a new message is published
 		 *	Subscribes the passed function to the passed message. Every returned token is unique and should be stored if
 		 *	you need to unsubscribe
 		**/
-		PubSub.subscribe = function( message, func ){
-			if ( typeof func !== 'function'){
-				return false;
-			}
+	    PubSub.subscribe = function( message, func ){
+	        if ( typeof func !== 'function'){
+	            return false;
+	        }
 
-			// message is not registered yet
-			if ( !messages.hasOwnProperty( message ) ){
-				messages[message] = {};
-			}
+	        // message is not registered yet
+	        if ( !messages.hasOwnProperty( message ) ){
+	            messages[message] = {};
+	        }
 
-			// forcing token as String, to allow for future expansions without breaking usage
-			// and allow for easy use as key names for the 'messages' object
-			var token = 'uid_' + String(++lastUid);
-			messages[message][token] = func;
+	        // forcing token as String, to allow for future expansions without breaking usage
+	        // and allow for easy use as key names for the 'messages' object
+	        var token = 'uid_' + String(++lastUid);
+	        messages[message][token] = func;
 
-			// return token for unsubscribing
-			return token;
-		};
+	        // return token for unsubscribing
+	        return token;
+	    };
 
-		/* Public: Clears all subscriptions
+	    /**
+		 *	PubSub.subscribeOnce( message, func ) -> PubSub
+		 *	- message (String): The message to subscribe to
+		 *	- func (Function): The function to call when a new message is published
+		 *	Subscribes the passed function to the passed message once
+		**/
+	    PubSub.subscribeOnce = function( message, func ){
+	        var token = PubSub.subscribe( message, function(){
+	            // before func apply, unsubscribe message
+	            PubSub.unsubscribe( token );
+	            func.apply( this, arguments );
+	        });
+	        return PubSub;
+	    };
+
+	    /* Public: Clears all subscriptions
 		 */
-		PubSub.clearAllSubscriptions = function clearAllSubscriptions(){
-			messages = {};
-		};
+	    PubSub.clearAllSubscriptions = function clearAllSubscriptions(){
+	        messages = {};
+	    };
 
-		/*Public: Clear subscriptions by the topic
+	    /*Public: Clear subscriptions by the topic
 		*/
-		PubSub.clearSubscriptions = function clearSubscriptions(topic){
-			var m; 
-			for (m in messages){
-				if (messages.hasOwnProperty(m) && m.indexOf(topic) === 0){
-					delete messages[m];
-				}
-			}
-		};
+	    PubSub.clearSubscriptions = function clearSubscriptions(topic){
+	        var m;
+	        for (m in messages){
+	            if (messages.hasOwnProperty(m) && m.indexOf(topic) === 0){
+	                delete messages[m];
+	            }
+	        }
+	    };
 
-		/* Public: removes subscriptions.
+	    /* Public: removes subscriptions.
 		 * When passed a token, removes a specific subscription.
 		 * When passed a function, removes all subscriptions for that function
 		 * When passed a topic, removes all subscriptions for that topic (hierarchy)
@@ -513,70 +665,162 @@ return /******/ (function(modules) { // webpackBootstrap
 		 *		// Example 3 - unsubscribing a topic
 		 *		PubSub.unsubscribe('mytopic');
 		 */
-		PubSub.unsubscribe = function(value){
-			var isTopic    = typeof value === 'string' && messages.hasOwnProperty(value),
-				isToken    = !isTopic && typeof value === 'string',
-				isFunction = typeof value === 'function',
-				result = false,
-				m, message, t;
+	    PubSub.unsubscribe = function(value){
+	        var descendantTopicExists = function(topic) {
+	                var m;
+	                for ( m in messages ){
+	                    if ( messages.hasOwnProperty(m) && m.indexOf(topic) === 0 ){
+	                        // a descendant of the topic exists:
+	                        return true;
+	                    }
+	                }
 
-			if (isTopic){
-				delete messages[value];
-				return;
-			}
+	                return false;
+	            },
+	            isTopic    = typeof value === 'string' && ( messages.hasOwnProperty(value) || descendantTopicExists(value) ),
+	            isToken    = !isTopic && typeof value === 'string',
+	            isFunction = typeof value === 'function',
+	            result = false,
+	            m, message, t;
 
-			for ( m in messages ){
-				if ( messages.hasOwnProperty( m ) ){
-					message = messages[m];
+	        if (isTopic){
+	            PubSub.clearSubscriptions(value);
+	            return;
+	        }
 
-					if ( isToken && message[value] ){
-						delete message[value];
-						result = value;
-						// tokens are unique, so we can just stop here
-						break;
-					}
+	        for ( m in messages ){
+	            if ( messages.hasOwnProperty( m ) ){
+	                message = messages[m];
 
-					if (isFunction) {
-						for ( t in message ){
-							if (message.hasOwnProperty(t) && message[t] === value){
-								delete message[t];
-								result = true;
-							}
-						}
-					}
-				}
-			}
+	                if ( isToken && message[value] ){
+	                    delete message[value];
+	                    result = value;
+	                    // tokens are unique, so we can just stop here
+	                    break;
+	                }
 
-			return result;
-		};
+	                if (isFunction) {
+	                    for ( t in message ){
+	                        if (message.hasOwnProperty(t) && message[t] === value){
+	                            delete message[t];
+	                            result = true;
+	                        }
+	                    }
+	                }
+	            }
+	        }
+
+	        return result;
+	    };
 	}));
 
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)(module)))
 
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
 
 	'use strict';
+	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
-	function ToObject(val) {
-		if (val == null) {
+	function toObject(val) {
+		if (val === null || val === undefined) {
 			throw new TypeError('Object.assign cannot be called with null or undefined');
 		}
 
 		return Object(val);
 	}
 
-	module.exports = Object.assign || function (target, source) {
+	function shouldUseNative() {
+		try {
+			if (!Object.assign) {
+				return false;
+			}
+
+			// Detect buggy property enumeration order in older V8 versions.
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			test1[5] = 'de';
+			if (Object.getOwnPropertyNames(test1)[0] === '5') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test2 = {};
+			for (var i = 0; i < 10; i++) {
+				test2['_' + String.fromCharCode(i)] = i;
+			}
+			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+				return test2[n];
+			});
+			if (order2.join('') !== '0123456789') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test3 = {};
+			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+				test3[letter] = letter;
+			});
+			if (Object.keys(Object.assign({}, test3)).join('') !==
+					'abcdefghijklmnopqrst') {
+				return false;
+			}
+
+			return true;
+		} catch (err) {
+			// We don't expect any of the above to throw, but better to be safe.
+			return false;
+		}
+	}
+
+	module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 		var from;
-		var keys;
-		var to = ToObject(target);
+		var to = toObject(target);
+		var symbols;
 
 		for (var s = 1; s < arguments.length; s++) {
-			from = arguments[s];
-			keys = Object.keys(Object(from));
+			from = Object(arguments[s]);
 
-			for (var i = 0; i < keys.length; i++) {
-				to[keys[i]] = from[keys[i]];
+			for (var key in from) {
+				if (hasOwnProperty.call(from, key)) {
+					to[key] = from[key];
+				}
+			}
+
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
+				for (var i = 0; i < symbols.length; i++) {
+					if (propIsEnumerable.call(from, symbols[i])) {
+						to[symbols[i]] = from[symbols[i]];
+					}
+				}
 			}
 		}
 
@@ -584,113 +828,230 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
 
-	var ActionSheetButton = React.createClass({
-	  displayName: 'ActionSheetButton',
+	var ActionSheetButton = function (_React$Component) {
+	  _inherits(ActionSheetButton, _React$Component);
 
-	  toggle: function toggle() {
-	    this.props.setActiveState(!this.props.active);
-	  },
-	  render: function render() {
-	    var Title = null;
-	    if (this.props.title.length > 0) {
-	      Title = React.createElement(
-	        'a',
-	        { className: 'button' },
-	        this.props.title
+	  function ActionSheetButton() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, ActionSheetButton);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ActionSheetButton.__proto__ || Object.getPrototypeOf(ActionSheetButton)).call.apply(_ref, [this].concat(args))), _this), _this.toggle = function () {
+	      _this.props.setActiveState(!_this.props.active);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(ActionSheetButton, [{
+	    key: 'render',
+	    value: function render() {
+	      var Title = null;
+	      if (this.props.title.length > 0) {
+	        Title = React.createElement(
+	          'a',
+	          { className: 'button' },
+	          this.props.title
+	        );
+	      }
+	      return React.createElement(
+	        'div',
+	        { onClick: this.toggle },
+	        Title,
+	        React.createElement(
+	          'div',
+	          null,
+	          this.props.children
+	        )
 	      );
 	    }
-	    return React.createElement(
-	      'div',
-	      { onClick: this.toggle },
-	      Title,
-	      React.createElement(
-	        'div',
-	        null,
-	        this.props.children
-	      )
-	    );
-	  }
-	});
+	  }]);
+
+	  return ActionSheetButton;
+	}(React.Component);
+
+	ActionSheetButton.displayName = "ActionSheetButton";
+
 
 	module.exports = ActionSheetButton;
 
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var classnames = __webpack_require__(4);
 
-	var ActionSheetContent = React.createClass({
-	  displayName: 'ActionSheetContent',
+	var ActionSheetContent = function (_React$Component) {
+	  _inherits(ActionSheetContent, _React$Component);
 
-	  getDefaultProps: function getDefaultProps() {
-	    return { position: 'bottom' };
-	  },
-	  render: function render() {
-	    var classes = {
-	      'action-sheet': true,
-	      'is-active': this.props.active
-	    };
-	    return React.createElement(
-	      'div',
-	      { className: classnames(classes) },
-	      this.props.children
-	    );
+	  function ActionSheetContent() {
+	    _classCallCheck(this, ActionSheetContent);
+
+	    return _possibleConstructorReturn(this, (ActionSheetContent.__proto__ || Object.getPrototypeOf(ActionSheetContent)).apply(this, arguments));
 	  }
-	});
+
+	  _createClass(ActionSheetContent, [{
+	    key: 'render',
+	    value: function render() {
+	      var classes = {
+	        'action-sheet': true,
+	        'is-active': this.props.active
+	      };
+	      return React.createElement(
+	        'div',
+	        { className: classnames(classes) },
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return ActionSheetContent;
+	}(React.Component);
+
+	ActionSheetContent.defaultProps = { position: 'bottom' };
+
 
 	module.exports = ActionSheetContent;
 
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-dom\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var ExecutionEnvironment = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react/lib/ExecutionEnvironment\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var ExecutionEnvironment = __webpack_require__(13);
 	var IconicJs = ExecutionEnvironment.canUseDOM && __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../vendor/iconic.min\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
-	var Iconic = React.createClass({
-	  displayName: 'Iconic',
+	var Iconic = function (_React$Component) {
+	  _inherits(Iconic, _React$Component);
 
-	  inject: function inject() {
-	    var ico = IconicJs();
-	    ico.inject(ReactDOM.findDOMNode(this));
-	  },
-	  componentDidMount: function componentDidMount() {
-	    this.inject();
-	  },
-	  componentDidUpdate: function componentDidUpdate() {
-	    this.inject();
-	  },
-	  render: function render() {
-	    return React.Children.only(this.props.children);
+	  function Iconic() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Iconic);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Iconic.__proto__ || Object.getPrototypeOf(Iconic)).call.apply(_ref, [this].concat(args))), _this), _this.inject = function () {
+	      var ico = IconicJs();
+	      ico.inject(ReactDOM.findDOMNode(_this));
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
+
+	  _createClass(Iconic, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.inject();
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.inject();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.Children.only(this.props.children);
+	    }
+	  }]);
+
+	  return Iconic;
+	}(React.Component);
 
 	module.exports = Iconic;
 
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 *
+	 */
+
+	'use strict';
+
+	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+	/**
+	 * Simple, lightweight module assisting with the detection and context of
+	 * Worker. Helps avoid circular dependencies and allows code to reason about
+	 * whether or not they are in a Worker, even if they never include the main
+	 * `ReactWorker` dependency.
+	 */
+	var ExecutionEnvironment = {
+
+	  canUseDOM: canUseDOM,
+
+	  canUseWorkers: typeof Worker !== 'undefined',
+
+	  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+	  canUseViewport: canUseDOM && !!window.screen,
+
+	  isInWorker: !canUseDOM // For now, this is true - might change in the future.
+
+	};
+
+	module.exports = ExecutionEnvironment;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(2);
-	var ResponsiveMixin = __webpack_require__(12);
+	var createReactClass = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"create-react-class\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var ResponsiveMixin = __webpack_require__(15);
 
 	var namedQueries = {
 	  // small: '(min-width: 0) and  (max-width: 640px)',
@@ -707,49 +1068,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	  //   'only screen and (min-resolution: 2dppx)'
 	};
 
-	var Interchange = React.createClass({
+	var Interchange = createReactClass({
 	  displayName: 'Interchange',
-
 	  mixins: [ResponsiveMixin],
+
 	  getInitialState: function getInitialState() {
 	    return { matchedMedia: 'large' };
 	  },
+
 	  componentDidMount: function componentDidMount() {
 	    // for (var name in namedQueries) {
 	    //   this.media(namedQueries[name], function () {
 	    //     this.setState({matchedMedia: name});
 	    //   }.bind(this));
 	    // }
-	    this.media({ minWidth: 0, maxWidth: 640 }, (function () {
+	    this.media({ minWidth: 0, maxWidth: 640 }, function () {
 	      this.setState({ matchedMedia: 'small' });
-	    }).bind(this));
-	    this.media({ minWidth: 641, maxWidth: 1200 }, (function () {
+	    }.bind(this));
+	    this.media({ minWidth: 641, maxWidth: 1200 }, function () {
 	      this.setState({ matchedMedia: 'medium' });
-	    }).bind(this));
-	    this.media({ minWidth: 1200, maxWidth: 1440 }, (function () {
+	    }.bind(this));
+	    this.media({ minWidth: 1200, maxWidth: 1440 }, function () {
 	      this.setState({ matchedMedia: 'large' });
-	    }).bind(this));
+	    }.bind(this));
 	  },
+
 	  render: function render() {
 	    var matchedNode = null;
-	    React.Children.forEach(this.props.children, (function (child) {
+	    React.Children.forEach(this.props.children, function (child) {
 	      if (child.props.media === this.state.matchedMedia) {
 	        matchedNode = child;
 	      }
-	    }).bind(this));
+	    }.bind(this));
 	    return matchedNode;
 	  }
 	});
 
 	module.exports = Interchange;
 
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var canUseDOM = __webpack_require__(13);
-	var enquire = canUseDOM && __webpack_require__(14);
-	var json2mq = __webpack_require__(15);
+	var canUseDOM = __webpack_require__(16);
+	var enquire = canUseDOM && __webpack_require__(17);
+	var json2mq = __webpack_require__(22);
 
 	var ResponsiveMixin = {
 	  media: function (query, handler) {
@@ -778,9 +1141,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = ResponsiveMixin;
 
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
 
 	var canUseDOM = !!(
 	  typeof window !== 'undefined' &&
@@ -790,309 +1153,339 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = canUseDOM;
 
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	 * enquire.js v2.1.1 - Awesome Media Queries in JavaScript
-	 * Copyright (c) 2014 Nick Williams - http://wicky.nillia.ms/enquire.js
-	 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
+	var MediaQueryDispatch = __webpack_require__(18);
+	module.exports = new MediaQueryDispatch();
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var MediaQuery = __webpack_require__(19);
+	var Util = __webpack_require__(21);
+	var each = Util.each;
+	var isFunction = Util.isFunction;
+	var isArray = Util.isArray;
+
+	/**
+	 * Allows for registration of query handlers.
+	 * Manages the query handler's state and is responsible for wiring up browser events
+	 *
+	 * @constructor
 	 */
-
-	;(function (name, context, factory) {
-		var matchMedia = window.matchMedia;
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = factory(matchMedia);
-		}
-		else if (true) {
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
-				return (context[name] = factory(matchMedia));
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		}
-		else {
-			context[name] = factory(matchMedia);
-		}
-	}('enquire', this, function (matchMedia) {
-
-		'use strict';
-
-	    /*jshint unused:false */
-	    /**
-	     * Helper function for iterating over a collection
-	     *
-	     * @param collection
-	     * @param fn
-	     */
-	    function each(collection, fn) {
-	        var i      = 0,
-	            length = collection.length,
-	            cont;
-
-	        for(i; i < length; i++) {
-	            cont = fn(collection[i], i);
-	            if(cont === false) {
-	                break; //allow early exit
-	            }
-	        }
+	function MediaQueryDispatch () {
+	    if(!window.matchMedia) {
+	        throw new Error('matchMedia not present, legacy browsers require a polyfill');
 	    }
 
-	    /**
-	     * Helper function for determining whether target object is an array
-	     *
-	     * @param target the object under test
-	     * @return {Boolean} true if array, false otherwise
-	     */
-	    function isArray(target) {
-	        return Object.prototype.toString.apply(target) === '[object Array]';
-	    }
+	    this.queries = {};
+	    this.browserIsIncapable = !window.matchMedia('only all').matches;
+	}
+
+	MediaQueryDispatch.prototype = {
+
+	    constructor : MediaQueryDispatch,
 
 	    /**
-	     * Helper function for determining whether target object is a function
+	     * Registers a handler for the given media query
 	     *
-	     * @param target the object under test
-	     * @return {Boolean} true if function, false otherwise
+	     * @param {string} q the media query
+	     * @param {object || Array || Function} options either a single query handler object, a function, or an array of query handlers
+	     * @param {function} options.match fired when query matched
+	     * @param {function} [options.unmatch] fired when a query is no longer matched
+	     * @param {function} [options.setup] fired when handler first triggered
+	     * @param {boolean} [options.deferSetup=false] whether setup should be run immediately or deferred until query is first matched
+	     * @param {boolean} [shouldDegrade=false] whether this particular media query should always run on incapable browsers
 	     */
-	    function isFunction(target) {
-	        return typeof target === 'function';
-	    }
+	    register : function(q, options, shouldDegrade) {
+	        var queries         = this.queries,
+	            isUnconditional = shouldDegrade && this.browserIsIncapable;
 
-	    /**
-	     * Delegate to handle a media query being matched and unmatched.
-	     *
-	     * @param {object} options
-	     * @param {function} options.match callback for when the media query is matched
-	     * @param {function} [options.unmatch] callback for when the media query is unmatched
-	     * @param {function} [options.setup] one-time callback triggered the first time a query is matched
-	     * @param {boolean} [options.deferSetup=false] should the setup callback be run immediately, rather than first time query is matched?
-	     * @constructor
-	     */
-	    function QueryHandler(options) {
-	        this.options = options;
-	        !options.deferSetup && this.setup();
-	    }
-	    QueryHandler.prototype = {
-
-	        /**
-	         * coordinates setup of the handler
-	         *
-	         * @function
-	         */
-	        setup : function() {
-	            if(this.options.setup) {
-	                this.options.setup();
-	            }
-	            this.initialised = true;
-	        },
-
-	        /**
-	         * coordinates setup and triggering of the handler
-	         *
-	         * @function
-	         */
-	        on : function() {
-	            !this.initialised && this.setup();
-	            this.options.match && this.options.match();
-	        },
-
-	        /**
-	         * coordinates the unmatch event for the handler
-	         *
-	         * @function
-	         */
-	        off : function() {
-	            this.options.unmatch && this.options.unmatch();
-	        },
-
-	        /**
-	         * called when a handler is to be destroyed.
-	         * delegates to the destroy or unmatch callbacks, depending on availability.
-	         *
-	         * @function
-	         */
-	        destroy : function() {
-	            this.options.destroy ? this.options.destroy() : this.off();
-	        },
-
-	        /**
-	         * determines equality by reference.
-	         * if object is supplied compare options, if function, compare match callback
-	         *
-	         * @function
-	         * @param {object || function} [target] the target for comparison
-	         */
-	        equals : function(target) {
-	            return this.options === target || this.options.match === target;
+	        if(!queries[q]) {
+	            queries[q] = new MediaQuery(q, isUnconditional);
 	        }
 
+	        //normalise to object in an array
+	        if(isFunction(options)) {
+	            options = { match : options };
+	        }
+	        if(!isArray(options)) {
+	            options = [options];
+	        }
+	        each(options, function(handler) {
+	            if (isFunction(handler)) {
+	                handler = { match : handler };
+	            }
+	            queries[q].addHandler(handler);
+	        });
+
+	        return this;
+	    },
+
+	    /**
+	     * unregisters a query and all it's handlers, or a specific handler for a query
+	     *
+	     * @param {string} q the media query to target
+	     * @param {object || function} [handler] specific handler to unregister
+	     */
+	    unregister : function(q, handler) {
+	        var query = this.queries[q];
+
+	        if(query) {
+	            if(handler) {
+	                query.removeHandler(handler);
+	            }
+	            else {
+	                query.clear();
+	                delete this.queries[q];
+	            }
+	        }
+
+	        return this;
+	    }
+	};
+
+	module.exports = MediaQueryDispatch;
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var QueryHandler = __webpack_require__(20);
+	var each = __webpack_require__(21).each;
+
+	/**
+	 * Represents a single media query, manages it's state and registered handlers for this query
+	 *
+	 * @constructor
+	 * @param {string} query the media query string
+	 * @param {boolean} [isUnconditional=false] whether the media query should run regardless of whether the conditions are met. Primarily for helping older browsers deal with mobile-first design
+	 */
+	function MediaQuery(query, isUnconditional) {
+	    this.query = query;
+	    this.isUnconditional = isUnconditional;
+	    this.handlers = [];
+	    this.mql = window.matchMedia(query);
+
+	    var self = this;
+	    this.listener = function(mql) {
+	        // Chrome passes an MediaQueryListEvent object, while other browsers pass MediaQueryList directly
+	        self.mql = mql.currentTarget || mql;
+	        self.assess();
 	    };
+	    this.mql.addListener(this.listener);
+	}
+
+	MediaQuery.prototype = {
+
+	    constuctor : MediaQuery,
+
 	    /**
-	     * Represents a single media query, manages it's state and registered handlers for this query
+	     * add a handler for this query, triggering if already active
 	     *
-	     * @constructor
-	     * @param {string} query the media query string
-	     * @param {boolean} [isUnconditional=false] whether the media query should run regardless of whether the conditions are met. Primarily for helping older browsers deal with mobile-first design
+	     * @param {object} handler
+	     * @param {function} handler.match callback for when query is activated
+	     * @param {function} [handler.unmatch] callback for when query is deactivated
+	     * @param {function} [handler.setup] callback for immediate execution when a query handler is registered
+	     * @param {boolean} [handler.deferSetup=false] should the setup callback be deferred until the first time the handler is matched?
 	     */
-	    function MediaQuery(query, isUnconditional) {
-	        this.query = query;
-	        this.isUnconditional = isUnconditional;
-	        this.handlers = [];
-	        this.mql = matchMedia(query);
+	    addHandler : function(handler) {
+	        var qh = new QueryHandler(handler);
+	        this.handlers.push(qh);
 
-	        var self = this;
-	        this.listener = function(mql) {
-	            self.mql = mql;
-	            self.assess();
-	        };
-	        this.mql.addListener(this.listener);
-	    }
-	    MediaQuery.prototype = {
+	        this.matches() && qh.on();
+	    },
 
-	        /**
-	         * add a handler for this query, triggering if already active
-	         *
-	         * @param {object} handler
-	         * @param {function} handler.match callback for when query is activated
-	         * @param {function} [handler.unmatch] callback for when query is deactivated
-	         * @param {function} [handler.setup] callback for immediate execution when a query handler is registered
-	         * @param {boolean} [handler.deferSetup=false] should the setup callback be deferred until the first time the handler is matched?
-	         */
-	        addHandler : function(handler) {
-	            var qh = new QueryHandler(handler);
-	            this.handlers.push(qh);
-
-	            this.matches() && qh.on();
-	        },
-
-	        /**
-	         * removes the given handler from the collection, and calls it's destroy methods
-	         * 
-	         * @param {object || function} handler the handler to remove
-	         */
-	        removeHandler : function(handler) {
-	            var handlers = this.handlers;
-	            each(handlers, function(h, i) {
-	                if(h.equals(handler)) {
-	                    h.destroy();
-	                    return !handlers.splice(i,1); //remove from array and exit each early
-	                }
-	            });
-	        },
-
-	        /**
-	         * Determine whether the media query should be considered a match
-	         * 
-	         * @return {Boolean} true if media query can be considered a match, false otherwise
-	         */
-	        matches : function() {
-	            return this.mql.matches || this.isUnconditional;
-	        },
-
-	        /**
-	         * Clears all handlers and unbinds events
-	         */
-	        clear : function() {
-	            each(this.handlers, function(handler) {
-	                handler.destroy();
-	            });
-	            this.mql.removeListener(this.listener);
-	            this.handlers.length = 0; //clear array
-	        },
-
-	        /*
-	         * Assesses the query, turning on all handlers if it matches, turning them off if it doesn't match
-	         */
-	        assess : function() {
-	            var action = this.matches() ? 'on' : 'off';
-
-	            each(this.handlers, function(handler) {
-	                handler[action]();
-	            });
-	        }
-	    };
 	    /**
-	     * Allows for registration of query handlers.
-	     * Manages the query handler's state and is responsible for wiring up browser events
+	     * removes the given handler from the collection, and calls it's destroy methods
 	     *
-	     * @constructor
+	     * @param {object || function} handler the handler to remove
 	     */
-	    function MediaQueryDispatch () {
-	        if(!matchMedia) {
-	            throw new Error('matchMedia not present, legacy browsers require a polyfill');
-	        }
+	    removeHandler : function(handler) {
+	        var handlers = this.handlers;
+	        each(handlers, function(h, i) {
+	            if(h.equals(handler)) {
+	                h.destroy();
+	                return !handlers.splice(i,1); //remove from array and exit each early
+	            }
+	        });
+	    },
 
-	        this.queries = {};
-	        this.browserIsIncapable = !matchMedia('only all').matches;
+	    /**
+	     * Determine whether the media query should be considered a match
+	     *
+	     * @return {Boolean} true if media query can be considered a match, false otherwise
+	     */
+	    matches : function() {
+	        return this.mql.matches || this.isUnconditional;
+	    },
+
+	    /**
+	     * Clears all handlers and unbinds events
+	     */
+	    clear : function() {
+	        each(this.handlers, function(handler) {
+	            handler.destroy();
+	        });
+	        this.mql.removeListener(this.listener);
+	        this.handlers.length = 0; //clear array
+	    },
+
+	    /*
+	        * Assesses the query, turning on all handlers if it matches, turning them off if it doesn't match
+	        */
+	    assess : function() {
+	        var action = this.matches() ? 'on' : 'off';
+
+	        each(this.handlers, function(handler) {
+	            handler[action]();
+	        });
+	    }
+	};
+
+	module.exports = MediaQuery;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Delegate to handle a media query being matched and unmatched.
+	 *
+	 * @param {object} options
+	 * @param {function} options.match callback for when the media query is matched
+	 * @param {function} [options.unmatch] callback for when the media query is unmatched
+	 * @param {function} [options.setup] one-time callback triggered the first time a query is matched
+	 * @param {boolean} [options.deferSetup=false] should the setup callback be run immediately, rather than first time query is matched?
+	 * @constructor
+	 */
+	function QueryHandler(options) {
+	    this.options = options;
+	    !options.deferSetup && this.setup();
+	}
+
+	QueryHandler.prototype = {
+
+	    constructor : QueryHandler,
+
+	    /**
+	     * coordinates setup of the handler
+	     *
+	     * @function
+	     */
+	    setup : function() {
+	        if(this.options.setup) {
+	            this.options.setup();
+	        }
+	        this.initialised = true;
+	    },
+
+	    /**
+	     * coordinates setup and triggering of the handler
+	     *
+	     * @function
+	     */
+	    on : function() {
+	        !this.initialised && this.setup();
+	        this.options.match && this.options.match();
+	    },
+
+	    /**
+	     * coordinates the unmatch event for the handler
+	     *
+	     * @function
+	     */
+	    off : function() {
+	        this.options.unmatch && this.options.unmatch();
+	    },
+
+	    /**
+	     * called when a handler is to be destroyed.
+	     * delegates to the destroy or unmatch callbacks, depending on availability.
+	     *
+	     * @function
+	     */
+	    destroy : function() {
+	        this.options.destroy ? this.options.destroy() : this.off();
+	    },
+
+	    /**
+	     * determines equality by reference.
+	     * if object is supplied compare options, if function, compare match callback
+	     *
+	     * @function
+	     * @param {object || function} [target] the target for comparison
+	     */
+	    equals : function(target) {
+	        return this.options === target || this.options.match === target;
 	    }
 
-	    MediaQueryDispatch.prototype = {
+	};
 
-	        /**
-	         * Registers a handler for the given media query
-	         *
-	         * @param {string} q the media query
-	         * @param {object || Array || Function} options either a single query handler object, a function, or an array of query handlers
-	         * @param {function} options.match fired when query matched
-	         * @param {function} [options.unmatch] fired when a query is no longer matched
-	         * @param {function} [options.setup] fired when handler first triggered
-	         * @param {boolean} [options.deferSetup=false] whether setup should be run immediately or deferred until query is first matched
-	         * @param {boolean} [shouldDegrade=false] whether this particular media query should always run on incapable browsers
-	         */
-	        register : function(q, options, shouldDegrade) {
-	            var queries         = this.queries,
-	                isUnconditional = shouldDegrade && this.browserIsIncapable;
+	module.exports = QueryHandler;
 
-	            if(!queries[q]) {
-	                queries[q] = new MediaQuery(q, isUnconditional);
-	            }
 
-	            //normalise to object in an array
-	            if(isFunction(options)) {
-	                options = { match : options };
-	            }
-	            if(!isArray(options)) {
-	                options = [options];
-	            }
-	            each(options, function(handler) {
-	                queries[q].addHandler(handler);
-	            });
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
 
-	            return this;
-	        },
+	/**
+	 * Helper function for iterating over a collection
+	 *
+	 * @param collection
+	 * @param fn
+	 */
+	function each(collection, fn) {
+	    var i      = 0,
+	        length = collection.length,
+	        cont;
 
-	        /**
-	         * unregisters a query and all it's handlers, or a specific handler for a query
-	         *
-	         * @param {string} q the media query to target
-	         * @param {object || function} [handler] specific handler to unregister
-	         */
-	        unregister : function(q, handler) {
-	            var query = this.queries[q];
-
-	            if(query) {
-	                if(handler) {
-	                    query.removeHandler(handler);
-	                }
-	                else {
-	                    query.clear();
-	                    delete this.queries[q];
-	                }
-	            }
-
-	            return this;
+	    for(i; i < length; i++) {
+	        cont = fn(collection[i], i);
+	        if(cont === false) {
+	            break; //allow early exit
 	        }
-	    };
+	    }
+	}
 
-		return new MediaQueryDispatch();
+	/**
+	 * Helper function for determining whether target object is an array
+	 *
+	 * @param target the object under test
+	 * @return {Boolean} true if array, false otherwise
+	 */
+	function isArray(target) {
+	    return Object.prototype.toString.apply(target) === '[object Array]';
+	}
 
-	}));
+	/**
+	 * Helper function for determining whether target object is a function
+	 *
+	 * @param target the object under test
+	 * @return {Boolean} true if function, false otherwise
+	 */
+	function isFunction(target) {
+	    return typeof target === 'function';
+	}
 
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
+	module.exports = {
+	    isFunction : isFunction,
+	    isArray : isArray,
+	    each : each
+	};
 
-	var camel2hyphen = __webpack_require__(16);
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var camel2hyphen = __webpack_require__(23);
 
 	var isDimension = function (feature) {
 	  var re = /[height|width]$/;
@@ -1144,9 +1537,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = json2mq;
 
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
 
 	var camel2hyphen = function (str) {
 	  return str
@@ -1158,249 +1551,284 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = camel2hyphen;
 
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
-	var Animation = __webpack_require__(18);
-	var foundationApi = __webpack_require__(5);
+	var Animation = __webpack_require__(25);
+	var foundationApi = __webpack_require__(6);
 
-	var Modal = React.createClass({
-	  displayName: 'Modal',
+	var Modal = function (_React$Component) {
+	  _inherits(Modal, _React$Component);
 
-	  getInitialState: function getInitialState() {
-	    return { open: false };
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      overlay: true,
-	      overlayClose: true,
-	      animationIn: 'fadeIn',
-	      animationOut: 'fadeOut'
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    this.subscribe(this.props.id);
-	  },
-	  componentWillUnmount: function componentWillUnmount() {
-	    foundationApi.unsubscribe(this.props.id);
-	  },
-	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    if (nextProps.id !== this.props.id) {
-	      foundationApi.unsubscribe(this.props.id);
-	      this.subscribe(nextProps.id);
+	  function Modal() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Modal);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
 	    }
-	  },
-	  hideOverlay: function hideOverlay(e) {
-	    e.preventDefault();
-	    if (this.props.overlayClose) {
-	      this.setState({ open: false });
-	    }
-	  },
-	  stopClickPropagation: function stopClickPropagation(e) {
-	    e.preventDefault();
-	    e.stopPropagation();
-	  },
-	  subscribe: function subscribe(id) {
-	    foundationApi.subscribe(id, (function (name, msg) {
-	      if (msg === 'open') {
-	        this.setState({ open: true });
-	      } else if (msg === 'close') {
-	        this.setState({ open: false });
-	      } else if (msg === 'toggle') {
-	        this.setState({ open: !this.state.open });
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal.__proto__ || Object.getPrototypeOf(Modal)).call.apply(_ref, [this].concat(args))), _this), _this.state = { open: false }, _this.hideOverlay = function (e) {
+	      e.preventDefault();
+	      if (_this.props.overlayClose) {
+	        _this.setState({ open: false });
+	        if (_this.props.onClose) _this.props.onClose();
 	      }
-	    }).bind(this));
-	  },
-	  render: function render() {
-	    var overlayStyle = {};
-	    if (!this.props.overlay) {
-	      overlayStyle.background = 'transparent';
+	    }, _this.stopClickPropagation = function (e) {
+	      e.preventDefault();
+	      e.stopPropagation();
+	    }, _this.subscribe = function (id) {
+	      foundationApi.subscribe(id, function (name, msg) {
+	        if (msg === 'open') {
+	          this.setState({ open: true });
+	        } else if (msg === 'close') {
+	          this.setState({ open: false });
+	          if (this.props.onClose) this.props.onClose();
+	        } else if (msg === 'toggle') {
+	          this.setState({ open: !this.state.open });
+	          if (!this.state.open && this.props.onClose) this.props.onClose();
+	        }
+	      }.bind(_this));
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Modal, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.subscribe(this.props.id);
 	    }
-	    return React.createElement(
-	      Animation,
-	      { active: this.state.open, animationIn: 'fadeIn', animationOut: 'fadeOut' },
-	      React.createElement(
-	        'div',
-	        { className: 'modal-overlay', style: overlayStyle, onClick: this.hideOverlay },
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      foundationApi.unsubscribe(this.props.id);
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.id !== this.props.id) {
+	        foundationApi.unsubscribe(this.props.id);
+	        this.subscribe(nextProps.id);
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var overlayStyle = {};
+	      if (!this.props.overlay) {
+	        overlayStyle.background = 'transparent';
+	      }
+	      return React.createElement(
+	        Animation,
+	        { active: this.state.open, animationIn: 'fadeIn', animationOut: 'fadeOut' },
 	        React.createElement(
-	          Animation,
-	          {
-	            active: this.state.open,
-	            animationIn: this.props.animationIn,
-	            animationOut: this.props.animationOut
-	          },
+	          'div',
+	          { className: 'modal-overlay', style: overlayStyle, onClick: this.hideOverlay },
 	          React.createElement(
-	            'div',
-	            { id: this.props.id, 'data-closable': true, className: 'modal', onClick: this.stopClickPropagation },
-	            this.props.children
+	            Animation,
+	            {
+	              active: this.state.open,
+	              animationIn: this.props.animationIn,
+	              animationOut: this.props.animationOut
+	            },
+	            React.createElement(
+	              'div',
+	              { id: this.props.id, 'data-closable': true, className: 'modal', onClick: this.stopClickPropagation },
+	              this.props.children
+	            )
 	          )
 	        )
-	      )
-	    );
-	  }
-	});
+	      );
+	    }
+	  }]);
 
-	module.exports = Modal;
+	  return Modal;
+	}(React.Component);
 
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
+	Modal.defaultProps = {
+	  overlay: true,
+	  overlayClose: true,
+	  animationIn: 'fadeIn',
+	  animationOut: 'fadeOut',
+	  onClose: null
+	};
+	exports.default = Modal;
 
-	// some parts of code from react/lib/ReactCSSTransitionGroupChild.js
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-dom\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var ReactTransitionEvents = __webpack_require__(19);
-	var CSSCore = __webpack_require__(21);
-
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var TICK = 17;
-
-	var Animation = React.createClass({
-	  displayName: 'Animation',
-
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      active: false,
-	      animationIn: '',
-	      animationOut: ''
-	    };
-	  },
-	  reflow: function reflow(node) {
-	    return node.offsetWidth;
-	  },
-	  reset: function reset(node) {
-	    node.style.transitionDuration = 0;
-	    CSSCore.removeClass(node, 'ng-enter');
-	    CSSCore.removeClass(node, 'ng-leave');
-	    CSSCore.removeClass(node, 'ng-enter-active');
-	    CSSCore.removeClass(node, 'ng-leave-active');
-	    CSSCore.removeClass(node, this.props.animationIn);
-	    CSSCore.removeClass(node, this.props.animationOut);
-	  },
-	  finishAnimation: function finishAnimation() {
-	    var node = ReactDOM.findDOMNode(this);
-	    this.reset(node);
-	    CSSCore.removeClass(node, this.props.active ? '' : 'is-active');
-	    this.reflow(node);
-	    ReactTransitionEvents.removeEndEventListener(node, this.finishAnimation);
-	  },
-	  animate: function animate(animationClass, animationType) {
-	    var node = ReactDOM.findDOMNode(this);
-	    var initClass = 'ng-' + animationType;
-	    var activeClass = initClass + '-active';
-
-	    this.reset(node);
-	    CSSCore.addClass(node, animationClass);
-	    CSSCore.addClass(node, initClass);
-	    CSSCore.addClass(node, 'is-active');
-
-	    //force a "tick"
-	    this.reflow(node);
-
-	    //activate
-	    node.style.transitionDuration = '';
-	    CSSCore.addClass(node, activeClass);
-
-	    ReactTransitionEvents.addEndEventListener(node, this.finishAnimation);
-	  },
-	  componentDidUpdate: function componentDidUpdate(prevProps) {
-	    if (prevProps.active !== this.props.active) {
-	      var animationClass = this.props.active ? this.props.animationIn : this.props.animationOut;
-	      var animationType = this.props.active ? 'enter' : 'leave';
-	      this.animate(animationClass, animationType);
-	    }
-	  },
-	  render: function render() {
-	    var child = React.Children.only(this.props.children);
-	    var extraProps = {};
-	    return React.cloneElement(child, extraProps);
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = Animation;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
+	var _ReactTransitionEvents = __webpack_require__(26);
+
+	var _ReactTransitionEvents2 = _interopRequireDefault(_ReactTransitionEvents);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// some parts of code from react/lib/ReactCSSTransitionGroupChild.js
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-dom\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var CSSCore = __webpack_require__(28);
+
+	var classnames = __webpack_require__(4);
+	var TICK = 17;
+
+	var Animation = function (_React$Component) {
+	  _inherits(Animation, _React$Component);
+
+	  function Animation() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Animation);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Animation.__proto__ || Object.getPrototypeOf(Animation)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.reflow = function (node) {
+	      return node.offsetWidth;
+	    }, _this.reset = function (node) {
+	      node.style.transitionDuration = 0;
+	      CSSCore.removeClass(node, 'ng-enter');
+	      CSSCore.removeClass(node, 'ng-leave');
+	      CSSCore.removeClass(node, 'ng-enter-active');
+	      CSSCore.removeClass(node, 'ng-leave-active');
+	      CSSCore.removeClass(node, _this.props.animationIn);
+	      CSSCore.removeClass(node, _this.props.animationOut);
+	    }, _this.finishAnimation = function () {
+	      var node = ReactDOM.findDOMNode(_this);
+	      _this.reset(node);
+	      CSSCore.removeClass(node, _this.props.active ? '' : 'is-active');
+	      _this.reflow(node);
+	      _ReactTransitionEvents2.default.removeEndEventListener(node, _this.finishAnimation);
+	    }, _this.animate = function (animationClass, animationType) {
+	      var node = ReactDOM.findDOMNode(_this);
+	      var initClass = 'ng-' + animationType;
+	      var activeClass = initClass + '-active';
+
+	      _this.reset(node);
+	      CSSCore.addClass(node, animationClass);
+	      CSSCore.addClass(node, initClass);
+	      CSSCore.addClass(node, 'is-active');
+
+	      //force a "tick"
+	      _this.reflow(node);
+
+	      //activate
+	      node.style.transitionDuration = '';
+	      CSSCore.addClass(node, activeClass);
+
+	      _ReactTransitionEvents2.default.addEndEventListener(node, _this.finishAnimation);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Animation, [{
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps) {
+	      if (prevProps.active !== this.props.active) {
+	        var animationClass = this.props.active ? this.props.animationIn : this.props.animationOut;
+	        var animationType = this.props.active ? 'enter' : 'leave';
+	        this.animate(animationClass, animationType);
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var child = React.Children.only(this.props.children);
+	      var extraProps = {};
+	      return React.cloneElement(child, extraProps);
+	    }
+	  }]);
+
+	  return Animation;
+	}(React.Component);
+
+	Animation.defaultProps = {
+	  active: false,
+	  animationIn: '',
+	  animationOut: ''
+	};
+	exports.default = Animation;
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @providesModule ReactTransitionEvents
 	 */
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(20);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	/**
-	 * EVENT_NAME_MAP is used to determine which event fired when a
-	 * transition/animation ends, based on the style property used to
-	 * define that event.
-	 */
-	var EVENT_NAME_MAP = {
-	  transitionend: {
-	    'transition': 'transitionend',
-	    'WebkitTransition': 'webkitTransitionEnd',
-	    'MozTransition': 'mozTransitionEnd',
-	    'OTransition': 'oTransitionEnd',
-	    'msTransition': 'MSTransitionEnd'
-	  },
+	var _ExecutionEnvironment = __webpack_require__(13);
 
-	  animationend: {
-	    'animation': 'animationend',
-	    'WebkitAnimation': 'webkitAnimationEnd',
-	    'MozAnimation': 'mozAnimationEnd',
-	    'OAnimation': 'oAnimationEnd',
-	    'msAnimation': 'MSAnimationEnd'
-	  }
-	};
+	var _ExecutionEnvironment2 = _interopRequireDefault(_ExecutionEnvironment);
+
+	var _getVendorPrefixedEventName = __webpack_require__(27);
+
+	var _getVendorPrefixedEventName2 = _interopRequireDefault(_getVendorPrefixedEventName);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var endEvents = [];
 
 	function detectEvents() {
-	  var testEl = document.createElement('div');
-	  var style = testEl.style;
+	  var animEnd = (0, _getVendorPrefixedEventName2.default)('animationend');
+	  var transEnd = (0, _getVendorPrefixedEventName2.default)('transitionend');
 
-	  // On some platforms, in particular some releases of Android 4.x,
-	  // the un-prefixed "animation" and "transition" properties are defined on the
-	  // style object but the events that fire will still be prefixed, so we need
-	  // to check if the un-prefixed events are useable, and if not remove them
-	  // from the map
-	  if (!('AnimationEvent' in window)) {
-	    delete EVENT_NAME_MAP.animationend.animation;
+	  if (animEnd) {
+	    endEvents.push(animEnd);
 	  }
 
-	  if (!('TransitionEvent' in window)) {
-	    delete EVENT_NAME_MAP.transitionend.transition;
-	  }
-
-	  for (var baseEventName in EVENT_NAME_MAP) {
-	    var baseEvents = EVENT_NAME_MAP[baseEventName];
-	    for (var styleName in baseEvents) {
-	      if (styleName in style) {
-	        endEvents.push(baseEvents[styleName]);
-	        break;
-	      }
-	    }
+	  if (transEnd) {
+	    endEvents.push(transEnd);
 	  }
 	}
 
-	if (ExecutionEnvironment.canUseDOM) {
+	if (_ExecutionEnvironment2.default.canUseDOM) {
 	  detectEvents();
 	}
 
@@ -1418,7 +1846,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	var ReactTransitionEvents = {
-	  addEndEventListener: function (node, eventListener) {
+	  addEndEventListener: function addEndEventListener(node, eventListener) {
 	    if (endEvents.length === 0) {
 	      // If CSS transitions are not supported, trigger an "end animation"
 	      // event immediately.
@@ -1430,7 +1858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 
-	  removeEndEventListener: function (node, eventListener) {
+	  removeEndEventListener: function removeEndEventListener(node, eventListener) {
 	    if (endEvents.length === 0) {
 	      return;
 	    }
@@ -1440,52 +1868,121 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	};
 
-	module.exports = ReactTransitionEvents;
+	exports.default = ReactTransitionEvents;
 
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ExecutionEnvironment
-	 */
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _ExecutionEnvironment = __webpack_require__(13);
+
+	var _ExecutionEnvironment2 = _interopRequireDefault(_ExecutionEnvironment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Simple, lightweight module assisting with the detection and context of
-	 * Worker. Helps avoid circular dependencies and allows code to reason about
-	 * whether or not they are in a Worker, even if they never include the main
-	 * `ReactWorker` dependency.
+	 * Generate a mapping of standard vendor prefixes using the defined style property and event name.
+	 *
+	 * @param {string} styleProp
+	 * @param {string} eventName
+	 * @returns {object}
 	 */
-	var ExecutionEnvironment = {
+	function makePrefixMap(styleProp, eventName) {
+	  var prefixes = {};
 
-	  canUseDOM: canUseDOM,
+	  prefixes[styleProp.toLowerCase()] = eventName.toLowerCase();
+	  prefixes['Webkit' + styleProp] = 'webkit' + eventName;
+	  prefixes['Moz' + styleProp] = 'moz' + eventName;
+	  prefixes['ms' + styleProp] = 'MS' + eventName;
+	  prefixes['O' + styleProp] = 'o' + eventName.toLowerCase();
 
-	  canUseWorkers: typeof Worker !== 'undefined',
+	  return prefixes;
+	}
 
-	  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+	/**
+	 * A list of event names to a configurable list of vendor prefixes.
+	 */
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
 
-	  canUseViewport: canUseDOM && !!window.screen,
-
-	  isInWorker: !canUseDOM // For now, this is true - might change in the future.
-
+	var vendorPrefixes = {
+	  animationend: makePrefixMap('Animation', 'AnimationEnd'),
+	  animationiteration: makePrefixMap('Animation', 'AnimationIteration'),
+	  animationstart: makePrefixMap('Animation', 'AnimationStart'),
+	  transitionend: makePrefixMap('Transition', 'TransitionEnd')
 	};
 
-	module.exports = ExecutionEnvironment;
+	/**
+	 * Event names that have already been detected and prefixed (if applicable).
+	 */
+	var prefixedEventNames = {};
 
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
+	/**
+	 * Element to check for prefixes on.
+	 */
+	var style = {};
+
+	/**
+	 * Bootstrap if a DOM exists.
+	 */
+	if (_ExecutionEnvironment2.default.canUseDOM) {
+	  style = document.createElement('div').style;
+
+	  // On some platforms, in particular some releases of Android 4.x,
+	  // the un-prefixed "animation" and "transition" properties are defined on the
+	  // style object but the events that fire will still be prefixed, so we need
+	  // to check if the un-prefixed events are usable, and if not remove them from the map.
+	  if (!('AnimationEvent' in window)) {
+	    delete vendorPrefixes.animationend.animation;
+	    delete vendorPrefixes.animationiteration.animation;
+	    delete vendorPrefixes.animationstart.animation;
+	  }
+
+	  // Same as above
+	  if (!('TransitionEvent' in window)) {
+	    delete vendorPrefixes.transitionend.transition;
+	  }
+	}
+
+	/**
+	 * Attempts to determine the correct vendor prefixed event name.
+	 *
+	 * @param {string} eventName
+	 * @returns {string}
+	 */
+	function getVendorPrefixedEventName(eventName) {
+	  if (prefixedEventNames[eventName]) {
+	    return prefixedEventNames[eventName];
+	  } else if (!vendorPrefixes[eventName]) {
+	    return eventName;
+	  }
+
+	  var prefixMap = vendorPrefixes[eventName];
+
+	  for (var styleProp in prefixMap) {
+	    if (prefixMap.hasOwnProperty(styleProp) && styleProp in style) {
+	      return prefixedEventNames[eventName] = prefixMap[styleProp];
+	    }
+	  }
+
+	  return eventName;
+	}
+
+	exports.default = getVendorPrefixedEventName;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -1500,7 +1997,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  addClass: function addClass(elem, className) {
 	    elem.className += ' ' + className;
 	  },
-
 	  removeClass: function removeClass(elem, needle) {
 	    var elemClass = elem.className.trim();
 	    var className = norm(elemClass);
@@ -1513,394 +2009,549 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	};
 
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = {
-	  Set: __webpack_require__(23),
-	  Static: __webpack_require__(25)
+	  Set: __webpack_require__(30),
+	  Static: __webpack_require__(32)
 	};
 
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
-	var foundationApi = __webpack_require__(5);
-	var Notification = __webpack_require__(24);
-	var Animation = __webpack_require__(18);
+	var foundationApi = __webpack_require__(6);
+	var Notification = __webpack_require__(31);
+	var Animation = __webpack_require__(25);
 
-	var NotificationSet = React.createClass({
-	  displayName: 'NotificationSet',
+	var NotificationSet = function (_React$Component) {
+	  _inherits(NotificationSet, _React$Component);
 
-	  getInitialState: function getInitialState() {
-	    return { notifications: [] };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    foundationApi.subscribe(this.props.id, (function (name, msg) {
-	      if (msg === 'clearall') {
-	        this.clearAll();
-	      } else {
-	        this.addNotification(msg);
-	      }
-	    }).bind(this));
-	  },
-	  addNotification: function addNotification(notification) {
-	    notification.id = foundationApi.generateUuid();
-	    var notifications = this.state.notifications.concat(notification);
-	    this.setState({
-	      notifications: notifications
-	    });
-	  },
-	  removeNotifcation: function removeNotifcation(id) {
-	    return (function (e) {
-	      var notifications = [];
-	      this.state.notifications.forEach(function (notification) {
-	        if (notification.id !== id) {
-	          notifications.push(notification);
-	        }
-	      });
-	      this.setState({
+	  function NotificationSet() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, NotificationSet);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = NotificationSet.__proto__ || Object.getPrototypeOf(NotificationSet)).call.apply(_ref, [this].concat(args))), _this), _this.state = { notifications: [] }, _this.addNotification = function (notification) {
+	      notification.id = foundationApi.generateUuid();
+	      var notifications = _this.state.notifications.concat(notification);
+	      _this.setState({
 	        notifications: notifications
 	      });
-	      e.preventDefault();
-	    }).bind(this);
-	  },
-	  clearAll: function clearAll() {
-	    this.setState({ notifications: [] });
-	  },
-	  render: function render() {
-	    var notifications = this.state.notifications.map((function (notification) {
-	      return React.createElement(
-	        Notification,
-	        _extends({ key: notification.id }, notification, { closeHandler: this.removeNotifcation(notification.id), className: 'is-active' }),
-	        notification.content
-	      );
-	    }).bind(this));
-	    return React.createElement(
-	      'div',
-	      null,
-	      notifications
-	    );
+	    }, _this.removeNotifcation = function (id) {
+	      return function (e) {
+	        var notifications = [];
+	        this.state.notifications.forEach(function (notification) {
+	          if (notification.id !== id) {
+	            notifications.push(notification);
+	          }
+	        });
+	        this.setState({
+	          notifications: notifications
+	        });
+	        e.preventDefault();
+	      }.bind(_this);
+	    }, _this.clearAll = function () {
+	      _this.setState({ notifications: [] });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
+
+	  _createClass(NotificationSet, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      foundationApi.subscribe(this.props.id, function (name, msg) {
+	        if (msg === 'clearall') {
+	          this.clearAll();
+	        } else {
+	          this.addNotification(msg);
+	        }
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var notifications = this.state.notifications.map(function (notification) {
+	        return React.createElement(
+	          Notification,
+	          _extends({ key: notification.id }, notification, { closeHandler: this.removeNotifcation(notification.id), className: 'is-active' }),
+	          notification.content
+	        );
+	      }.bind(this));
+	      return React.createElement(
+	        'div',
+	        null,
+	        notifications
+	      );
+	    }
+	  }]);
+
+	  return NotificationSet;
+	}(React.Component);
 
 	module.exports = NotificationSet;
 
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var React = __webpack_require__(2);
-
-	var Notification = React.createClass({
-	  displayName: 'Notification',
-
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      position: 'top-right',
-	      color: 'success',
-	      title: null,
-	      image: null,
-	      content: null,
-	      wrapperElement: "p"
-	    };
-	  },
-	  render: function render() {
-	    var classes = 'notification ' + this.props.position + ' ' + this.props.color;
-	    classes += ' ' + (this.props.className || '');
-	    var imageNode = null;
-	    if (this.props.image) {
-	      imageNode = React.createElement(
-	        'div',
-	        { className: 'notification-icon' },
-	        React.createElement('img', { src: '{{ image }}' })
-	      );
-	    }
-	    return React.createElement(
-	      'div',
-	      { id: this.props.id, 'data-closable': true, className: classes },
-	      React.createElement(
-	        'a',
-	        { href: '#', className: 'close-button', onClick: this.props.closeHandler },
-	        '×'
-	      ),
-	      imageNode,
-	      React.createElement(
-	        'div',
-	        { className: 'notification-content' },
-	        React.createElement(
-	          'h1',
-	          null,
-	          this.props.title
-	        ),
-	        React.createElement(this.props.wrapperElement, null, this.props.children)
-	      )
-	    );
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = Notification;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(2);
+
+	var Notification = function (_React$Component) {
+	  _inherits(Notification, _React$Component);
+
+	  function Notification() {
+	    _classCallCheck(this, Notification);
+
+	    return _possibleConstructorReturn(this, (Notification.__proto__ || Object.getPrototypeOf(Notification)).apply(this, arguments));
+	  }
+
+	  _createClass(Notification, [{
+	    key: 'render',
+	    value: function render() {
+	      var classes = 'notification ' + this.props.position + ' ' + this.props.color;
+	      classes += ' ' + (this.props.className || '');
+	      var imageNode = null;
+	      if (this.props.image) {
+	        imageNode = React.createElement(
+	          'div',
+	          { className: 'notification-icon' },
+	          React.createElement('img', { src: '{{ image }}' })
+	        );
+	      }
+	      return React.createElement(
+	        'div',
+	        { id: this.props.id, 'data-closable': true, className: classes },
+	        React.createElement(
+	          'a',
+	          { href: '#', className: 'close-button', onClick: this.props.closeHandler },
+	          '\xD7'
+	        ),
+	        imageNode,
+	        React.createElement(
+	          'div',
+	          { className: 'notification-content' },
+	          React.createElement(
+	            'h1',
+	            null,
+	            this.props.title
+	          ),
+	          React.createElement(this.props.wrapperElement, null, this.props.children)
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Notification;
+	}(React.Component);
+
+	Notification.defaultProps = {
+	  position: 'top-right',
+	  color: 'success',
+	  title: null,
+	  image: null,
+	  content: null,
+	  wrapperElement: "p"
+	};
+	exports.default = Notification;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var foundationApi = __webpack_require__(5);
-	var Animation = __webpack_require__(18);
-	var Notification = __webpack_require__(24);
+	var classnames = __webpack_require__(4);
+	var foundationApi = __webpack_require__(6);
+	var Animation = __webpack_require__(25);
+	var Notification = __webpack_require__(31);
 
-	var NotificationStatic = React.createClass({
-	  displayName: 'NotificationStatic',
+	var NotificationStatic = function (_React$Component) {
+	  _inherits(NotificationStatic, _React$Component);
 
-	  getInitialState: function getInitialState() {
-	    return { open: false };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    foundationApi.subscribe(this.props.id, (function (name, msg) {
-	      if (msg === 'open') {
-	        this.setState({ open: true });
-	      } else if (msg === 'close') {
-	        this.setState({ open: false });
-	      }
-	    }).bind(this));
-	  },
-	  componentWillUnmount: function componentWillUnmount() {
-	    foundationApi.unsubscribe(this.props.id);
-	  },
-	  closeHandler: function closeHandler(e) {
-	    this.setState({ open: false });
-	    e.preventDefault();
-	    e.stopPropagation();
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      Animation,
-	      { active: this.state.open, animationIn: 'fadeIn', animationOut: 'fadeOut' },
-	      React.createElement(
-	        Notification,
-	        _extends({}, this.props, { closeHandler: this.closeHandler }),
-	        this.props.children
-	      )
-	    );
+	  function NotificationStatic() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, NotificationStatic);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = NotificationStatic.__proto__ || Object.getPrototypeOf(NotificationStatic)).call.apply(_ref, [this].concat(args))), _this), _this.state = { open: false }, _this.closeHandler = function (e) {
+	      _this.setState({ open: false });
+	      e.preventDefault();
+	      e.stopPropagation();
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
+
+	  _createClass(NotificationStatic, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      foundationApi.subscribe(this.props.id, function (name, msg) {
+	        if (msg === 'open') {
+	          this.setState({ open: true });
+	        } else if (msg === 'close') {
+	          this.setState({ open: false });
+	        }
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      foundationApi.unsubscribe(this.props.id);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        Animation,
+	        { active: this.state.open, animationIn: 'fadeIn', animationOut: 'fadeOut' },
+	        React.createElement(
+	          Notification,
+	          _extends({}, this.props, { closeHandler: this.closeHandler }),
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NotificationStatic;
+	}(React.Component);
 
 	module.exports = NotificationStatic;
 
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var React = __webpack_require__(2);
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	// var LayerMixin = require('react-layer-mixin');
-	var foundationApi = __webpack_require__(5);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var Offcanvas = React.createClass({
-	  displayName: 'Offcanvas',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(2);
+	var classnames = __webpack_require__(4);
+	// var LayerMixin = require('react-layer-mixin');
+	var foundationApi = __webpack_require__(6);
+
+	var Offcanvas = function (_React$Component) {
+	  _inherits(Offcanvas, _React$Component);
+
+	  function Offcanvas() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Offcanvas);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Offcanvas.__proto__ || Object.getPrototypeOf(Offcanvas)).call.apply(_ref, [this].concat(args))), _this), _this.state = { open: false }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
 
 	  // mixins: [LayerMixin],
-	  getInitialState: function getInitialState() {
-	    return { open: false };
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      position: 'left'
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    foundationApi.subscribe(this.props.id, (function (name, msg) {
-	      if (msg === 'open') {
-	        this.setState({ open: true });
-	      } else if (msg === 'close') {
-	        this.setState({ open: false });
-	      } else if (msg === 'toggle') {
-	        this.setState({ open: !this.state.open });
-	      }
-	    }).bind(this));
-	  },
-	  componentWillUnmount: function componentWillUnmount() {
-	    foundationApi.unsubscribe(this.props.id);
-	  },
-	  render: function render() {
-	    var classes = {
-	      'off-canvas': true,
-	      'is-active': this.state.open
-	    };
-	    classes[this.props.position] = true;
-	    if (this.props.className) {
-	      classes[this.props.className] = true;
+
+
+	  _createClass(Offcanvas, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      foundationApi.subscribe(this.props.id, function (name, msg) {
+	        if (msg === 'open') {
+	          this.setState({ open: true });
+	        } else if (msg === 'close') {
+	          this.setState({ open: false });
+	        } else if (msg === 'toggle') {
+	          this.setState({ open: !this.state.open });
+	        }
+	      }.bind(this));
 	    }
-	    return React.createElement(
-	      'div',
-	      { id: this.props.id, 'data-closable': true, className: classnames(classes) },
-	      this.props.children
-	    );
-	  }
-	});
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      foundationApi.unsubscribe(this.props.id);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var classes = {
+	        'off-canvas': true,
+	        'is-active': this.state.open
+	      };
+	      classes[this.props.position] = true;
+	      if (this.props.className) {
+	        classes[this.props.className] = true;
+	      }
+	      return React.createElement(
+	        'div',
+	        { id: this.props.id, 'data-closable': true, className: classnames(classes) },
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return Offcanvas;
+	}(React.Component);
+
+	Offcanvas.defaultProps = {
+	  position: 'left'
+	};
+
 
 	module.exports = Offcanvas;
 
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var React = __webpack_require__(2);
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var Animation = __webpack_require__(18);
-	var foundationApi = __webpack_require__(5);
-
-	var Panel = React.createClass({
-	  displayName: 'Panel',
-
-	  getInitialState: function getInitialState() {
-	    return { open: false };
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      position: 'left'
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    foundationApi.subscribe(this.props.id, (function (name, msg) {
-	      if (msg === 'open') {
-	        this.setState({ open: true });
-	      } else if (msg === 'close') {
-	        this.setState({ open: false });
-	      } else if (msg === 'toggle') {
-	        this.setState({ open: !this.state.open });
-	      }
-	    }).bind(this));
-	  },
-	  componentWillUnmount: function componentWillUnmount() {
-	    foundationApi.unsubscribe(this.props.id);
-	  },
-	  render: function render() {
-	    var animationIn, animationOut;
-	    var classes = 'panel panel-' + this.props.position;
-	    if (this.props.className) {
-	      classes += ' ' + this.props.className;
-	    }
-	    if (this.props.position === 'left') {
-	      animationIn = this.props.animationIn || 'slideInRight';
-	      animationOut = this.props.animationOut || 'slideOutLeft';
-	    } else if (this.props.position === 'right') {
-	      animationIn = this.props.animationIn || 'slideInLeft';
-	      animationOut = this.props.animationOut || 'slideOutRight';
-	    } else if (this.props.position === 'top') {
-	      animationIn = this.props.animationIn || 'slideInDown';
-	      animationOut = this.props.animationOut || 'slideOutUp';
-	    } else if (this.props.position === 'bottom') {
-	      animationIn = this.props.animationIn || 'slideInUp';
-	      animationOut = this.props.animationOut || 'slideOutBottom';
-	    }
-	    return React.createElement(
-	      Animation,
-	      { active: this.state.open, animationIn: animationIn, animationOut: animationOut },
-	      React.createElement(
-	        'div',
-	        { 'data-closable': true, id: this.props.id, className: classes },
-	        this.props.children
-	      )
-	    );
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = Panel;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(2);
+	var classnames = __webpack_require__(4);
+	var Animation = __webpack_require__(25);
+	var foundationApi = __webpack_require__(6);
+
+	var Panel = function (_React$Component) {
+	  _inherits(Panel, _React$Component);
+
+	  function Panel() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Panel);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Panel.__proto__ || Object.getPrototypeOf(Panel)).call.apply(_ref, [this].concat(args))), _this), _this.state = { open: false }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Panel, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      foundationApi.subscribe(this.props.id, function (name, msg) {
+	        if (msg === 'open') {
+	          this.setState({ open: true });
+	        } else if (msg === 'close') {
+	          this.setState({ open: false });
+	        } else if (msg === 'toggle') {
+	          this.setState({ open: !this.state.open });
+	        }
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      foundationApi.unsubscribe(this.props.id);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var animationIn, animationOut;
+	      var classes = 'panel panel-' + this.props.position;
+	      if (this.props.className) {
+	        classes += ' ' + this.props.className;
+	      }
+	      if (this.props.position === 'left') {
+	        animationIn = this.props.animationIn || 'slideInRight';
+	        animationOut = this.props.animationOut || 'slideOutLeft';
+	      } else if (this.props.position === 'right') {
+	        animationIn = this.props.animationIn || 'slideInLeft';
+	        animationOut = this.props.animationOut || 'slideOutRight';
+	      } else if (this.props.position === 'top') {
+	        animationIn = this.props.animationIn || 'slideInDown';
+	        animationOut = this.props.animationOut || 'slideOutUp';
+	      } else if (this.props.position === 'bottom') {
+	        animationIn = this.props.animationIn || 'slideInUp';
+	        animationOut = this.props.animationOut || 'slideOutBottom';
+	      }
+	      return React.createElement(
+	        Animation,
+	        { active: this.state.open, animationIn: animationIn, animationOut: animationOut },
+	        React.createElement(
+	          'div',
+	          { 'data-closable': true, id: this.props.id, className: classes },
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Panel;
+	}(React.Component);
+
+	Panel.defaultProps = {
+	  position: 'left'
+	};
+	exports.default = Panel;
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-dom\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var ExecutionEnvironment = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react/lib/ExecutionEnvironment\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var foundationApi = __webpack_require__(5);
-	var Tether = ExecutionEnvironment.canUseDOM && __webpack_require__(29);
+	var classnames = __webpack_require__(4);
+	var ExecutionEnvironment = __webpack_require__(13);
+	var foundationApi = __webpack_require__(6);
+	var Tether = ExecutionEnvironment.canUseDOM && __webpack_require__(36);
 
-	var Popup = React.createClass({
-	  displayName: 'Popup',
+	var Popup = function (_React$Component) {
+	  _inherits(Popup, _React$Component);
 
-	  getInitialState: function getInitialState() {
-	    return {
+	  function Popup() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Popup);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Popup.__proto__ || Object.getPrototypeOf(Popup)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 	      active: false,
 	      tetherInit: false
-	    };
-	  },
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      pinTo: 'top center',
-	      pinAt: ''
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    this.tether = {};
-	    foundationApi.subscribe(this.props.id, (function (name, msg) {
-	      if (msg[0] === 'toggle') {
-	        this.toggle(msg[1]);
-	      }
-	    }).bind(this));
-	  },
-	  toggle: function toggle(target) {
-	    var active = !this.state.active;
-	    this.setState({ active: active }, (function () {
-	      if (active) {
-	        this.tetherElement(target);
-	      } else {
-	        this.tether.destroy();
-	      }
-	    }).bind(this));
-	  },
-	  tetherElement: function tetherElement(target) {
-	    var targetElement = document.getElementById(target);
-	    var attachment = 'top center';
-	    this.tether = new Tether({
-	      element: ReactDOM.findDOMNode(this),
-	      target: targetElement,
-	      attachment: attachment
-	    });
-	  },
-	  render: function render() {
-	    var classes = {
-	      popup: true,
-	      'is-active': this.state.active
-	    };
-	    return React.createElement(
-	      'div',
-	      { id: this.props.id, className: classnames(classes), 'data-closable': 'popup' },
-	      this.props.children
-	    );
+	    }, _this.toggle = function (target) {
+	      var active = !_this.state.active;
+	      _this.setState({ active: active }, function () {
+	        if (active) {
+	          this.tetherElement(target);
+	        } else {
+	          this.tether.destroy();
+	        }
+	      }.bind(_this));
+	    }, _this.tetherElement = function (target) {
+	      var targetElement = document.getElementById(target);
+	      var attachment = 'top center';
+	      _this.tether = new Tether({
+	        element: ReactDOM.findDOMNode(_this),
+	        target: targetElement,
+	        attachment: attachment
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
+
+	  _createClass(Popup, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.tether = {};
+	      foundationApi.subscribe(this.props.id, function (name, msg) {
+	        if (msg[0] === 'toggle') {
+	          this.toggle(msg[1]);
+	        }
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var classes = {
+	        popup: true,
+	        'is-active': this.state.active
+	      };
+	      return React.createElement(
+	        'div',
+	        { id: this.props.id, className: classnames(classes), 'data-closable': 'popup' },
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return Popup;
+	}(React.Component);
+
+	Popup.defaultProps = {
+	  pinTo: 'top center',
+	  pinAt: ''
+	};
+
 
 	module.exports = Popup;
 
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 0.6.5 */
 
@@ -3361,195 +4012,306 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
 
-	var Tabs = React.createClass({
-	  displayName: 'Tabs',
+	var Tabs = function (_React$Component) {
+	  _inherits(Tabs, _React$Component);
 
-	  getInitialState: function getInitialState() {
-	    return {
+	  function Tabs() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Tabs);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 	      selectedTab: 0
-	    };
-	  },
-	  selectTab: function selectTab(options) {
-	    this.setState(options);
-	  },
-	  render: function render() {
-	    var content = null;
-	    var children = React.Children.map(this.props.children, (function (child, index) {
-	      if (index === this.state.selectedTab) content = child.props.children;
-	      return React.cloneElement(child, {
-	        active: index === this.state.selectedTab,
-	        index: index,
-	        selectTab: this.selectTab
-	      });
-	    }).bind(this));
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'div',
-	        { className: 'tabs' },
-	        children
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'content' },
-	        content
-	      )
-	    );
+	    }, _this.selectTab = function (options) {
+	      _this.setState(options);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
 
-	module.exports = Tabs;
-	Tabs.Tab = __webpack_require__(31);
+	  _createClass(Tabs, [{
+	    key: 'render',
+	    value: function render() {
+	      var content = null;
+	      var children = React.Children.map(this.props.children, function (child, index) {
+	        if (index === this.state.selectedTab) content = child.props.children;
+	        return React.cloneElement(child, {
+	          active: index === this.state.selectedTab,
+	          index: index,
+	          selectTab: this.selectTab
+	        });
+	      }.bind(this));
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'div',
+	          { className: 'tabs' },
+	          children
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'content' },
+	          content
+	        )
+	      );
+	    }
+	  }]);
 
-/***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
+	  return Tabs;
+	}(React.Component);
+
+	exports.default = Tabs;
+
+	Tabs.Tab = __webpack_require__(38);
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
-	var classnames = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"classnames\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var classnames = __webpack_require__(4);
 
-	var Tab = React.createClass({
-	  displayName: 'Tab',
+	var Tab = function (_React$Component) {
+	  _inherits(Tab, _React$Component);
 
-	  select: function select() {
-	    var options = {
-	      selectedTab: this.props.index
-	    };
-	    this.props.selectTab(options);
-	  },
-	  render: function render() {
-	    var classes = {
-	      'tab-item': true,
-	      'is-active': this.props.active
-	    };
-	    return React.createElement(
-	      'div',
-	      { className: classnames(classes), onClick: this.select },
-	      this.props.title
-	    );
+	  function Tab() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Tab);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tab.__proto__ || Object.getPrototypeOf(Tab)).call.apply(_ref, [this].concat(args))), _this), _this.select = function () {
+	      var options = {
+	        selectedTab: _this.props.index
+	      };
+	      _this.props.selectTab(options);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
 
-	module.exports = Tab;
+	  _createClass(Tab, [{
+	    key: 'render',
+	    value: function render() {
+	      var classes = {
+	        'tab-item': true,
+	        'is-active': this.props.active
+	      };
+	      return React.createElement(
+	        'div',
+	        { className: classnames(classes), onClick: this.select },
+	        this.props.title
+	      );
+	    }
+	  }]);
 
-/***/ },
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
+	  return Tab;
+	}(React.Component);
+
+	exports.default = Tab;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-dom\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var foundationApi = __webpack_require__(5);
-	var PopupToggle = __webpack_require__(33);
+	var foundationApi = __webpack_require__(6);
+	var PopupToggle = __webpack_require__(40);
 
-	var Trigger = React.createClass({
-	  displayName: 'Trigger',
+	var Trigger = function (_React$Component) {
+	  _inherits(Trigger, _React$Component);
 
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      open: null,
-	      close: null,
-	      toggle: null,
-	      hardToggle: null,
-	      popupToggle: null,
-	      notify: null
-	    };
-	  },
-	  getCloseId: function getCloseId() {
-	    if (this.props.close) {
-	      return this.props.close;
-	    } else {
-	      var parentElement = false;
-	      var tempElement = ReactDOM.findDOMNode(this).parentNode;
-	      while (parentElement === false) {
-	        if (tempElement.nodeName == 'BODY') {
-	          parentElement = '';
+	  function Trigger() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Trigger);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Trigger.__proto__ || Object.getPrototypeOf(Trigger)).call.apply(_ref, [this].concat(args))), _this), _this.getCloseId = function () {
+	      if (_this.props.close) {
+	        return _this.props.close;
+	      } else {
+	        var parentElement = false;
+	        var tempElement = ReactDOM.findDOMNode(_this).parentNode;
+	        while (parentElement === false) {
+	          if (tempElement.nodeName == 'BODY') {
+	            parentElement = '';
+	          }
+	          if (typeof tempElement.getAttribute('data-closable') !== 'undefined' && tempElement.getAttribute('data-closable') !== false) {
+	            parentElement = tempElement;
+	          }
+
+	          tempElement = tempElement.parentNode;
 	        }
-	        if (typeof tempElement.getAttribute('data-closable') !== 'undefined' && tempElement.getAttribute('data-closable') !== false) {
-	          parentElement = tempElement;
-	        }
-
-	        tempElement = tempElement.parentNode;
+	        return parentElement.getAttribute('id');
 	      }
-	      return parentElement.getAttribute('id');
-	    }
-	  },
-	  clickHandler: function clickHandler(e) {
-	    e.preventDefault();
-	    if (this.props.open) {
-	      foundationApi.publish(this.props.open, 'open');
-	    } else if (this.props.close !== null) {
-	      foundationApi.publish(this.getCloseId(), 'close');
-	    } else if (this.props.toggle) {
-	      foundationApi.publish(this.props.toggle, 'toggle');
-	    } else if (this.props.hardToggle) {
-	      foundationApi.closeActiveElements({ exclude: this.props.hardToggle });
-	      foundationApi.publish(this.props.hardToggle, 'toggle');
-	    } else if (this.props.notify) {
-	      foundationApi.publish(this.props.notify, {
-	        title: this.props.title,
-	        content: this.props.content,
-	        position: this.props.position,
-	        color: this.props.color,
-	        image: this.props.image
-	      });
-	    }
-	  },
-	  render: function render() {
-	    if (this.props.popupToggle) {
-	      return React.createElement(PopupToggle, this.props);
-	    } else {
-	      var child = React.Children.only(this.props.children);
-	      return React.cloneElement(child, {
-	        onClick: this.clickHandler
-	      });
-	    }
+	    }, _this.clickHandler = function (e) {
+	      e.preventDefault();
+	      if (_this.props.open) {
+	        foundationApi.publish(_this.props.open, 'open');
+	      } else if (_this.props.close !== null) {
+	        foundationApi.publish(_this.getCloseId(), 'close');
+	      } else if (_this.props.toggle) {
+	        foundationApi.publish(_this.props.toggle, 'toggle');
+	      } else if (_this.props.hardToggle) {
+	        foundationApi.closeActiveElements({ exclude: _this.props.hardToggle });
+	        foundationApi.publish(_this.props.hardToggle, 'toggle');
+	      } else if (_this.props.notify) {
+	        foundationApi.publish(_this.props.notify, {
+	          title: _this.props.title,
+	          content: _this.props.content,
+	          position: _this.props.position,
+	          color: _this.props.color,
+	          image: _this.props.image
+	        });
+	      }
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
 
-	module.exports = Trigger;
+	  _createClass(Trigger, [{
+	    key: 'render',
+	    value: function render() {
+	      if (this.props.popupToggle) {
+	        return React.createElement(PopupToggle, this.props);
+	      } else {
+	        var child = React.Children.only(this.props.children);
+	        return React.cloneElement(child, {
+	          onClick: this.clickHandler
+	        });
+	      }
+	    }
+	  }]);
 
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
+	  return Trigger;
+	}(React.Component);
+
+	Trigger.defaultProps = {
+	  open: null,
+	  close: null,
+	  toggle: null,
+	  hardToggle: null,
+	  popupToggle: null,
+	  notify: null
+	};
+	exports.default = Trigger;
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(2);
-	var foundationApi = __webpack_require__(5);
+	var foundationApi = __webpack_require__(6);
 
-	var PopupToggle = React.createClass({
-	  displayName: 'PopupToggle',
+	var PopupToggle = function (_React$Component) {
+	  _inherits(PopupToggle, _React$Component);
 
-	  clickHandler: function clickHandler(id, e) {
-	    e.preventDefault();
-	    foundationApi.publish(this.props.popupToggle, ['toggle', id]);
-	  },
-	  render: function render() {
-	    var child = React.Children.only(this.props.children);
-	    var id = this.props.id || foundationApi.generateUuid();
-	    return React.cloneElement(child, {
-	      id: id,
-	      onClick: this.clickHandler.bind(this, id)
-	    });
+	  function PopupToggle() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, PopupToggle);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PopupToggle.__proto__ || Object.getPrototypeOf(PopupToggle)).call.apply(_ref, [this].concat(args))), _this), _this.clickHandler = function (id, e) {
+	      e.preventDefault();
+	      foundationApi.publish(_this.props.popupToggle, ['toggle', id]);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	});
+
+	  _createClass(PopupToggle, [{
+	    key: 'render',
+	    value: function render() {
+	      var child = React.Children.only(this.props.children);
+	      var id = this.props.id || foundationApi.generateUuid();
+	      return React.cloneElement(child, {
+	        id: id,
+	        onClick: this.clickHandler.bind(this, id)
+	      });
+	    }
+	  }]);
+
+	  return PopupToggle;
+	}(React.Component);
 
 	module.exports = PopupToggle;
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
