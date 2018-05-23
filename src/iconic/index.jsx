@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var ReactDOM = require('react-dom');
 var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
 var IconicJs = ExecutionEnvironment.canUseDOM && require('../vendor/iconic.min');

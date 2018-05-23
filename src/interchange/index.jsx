@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var createReactClass = require('create-react-class');
 var ResponsiveMixin = require('react-responsive-mixin');
 
@@ -32,13 +32,13 @@ var Interchange = createReactClass({
     //   }.bind(this));
     // }
     this.media({minWidth: 0, maxWidth: 640}, function () {
-      this.setState({matchedMedia: 'small'});  
+      this.setState({matchedMedia: 'small'});
     }.bind(this));
     this.media({minWidth: 641, maxWidth: 1200}, function () {
-      this.setState({matchedMedia: 'medium'});  
+      this.setState({matchedMedia: 'medium'});
     }.bind(this));
     this.media({minWidth: 1200, maxWidth: 1440}, function () {
-      this.setState({matchedMedia: 'large'});  
+      this.setState({matchedMedia: 'large'});
     }.bind(this));
   },
 

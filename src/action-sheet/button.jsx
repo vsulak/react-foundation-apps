@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 class ActionSheetButton extends React.Component {
   static displayName = "ActionSheetButton";

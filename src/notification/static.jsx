@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var classnames = require('classnames');
 var foundationApi = require('../utils/foundation-api');
 var Animation = require('../utils/animation');
@@ -14,7 +14,7 @@ class NotificationStatic extends React.Component {
       } else if (msg === 'close') {
         this.setState({open: false});
       }
-    }.bind(this)); 
+    }.bind(this));
   }
 
   componentWillUnmount() {

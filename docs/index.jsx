@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Router = require('react-router');
 var routes = require('./routes');
 var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');

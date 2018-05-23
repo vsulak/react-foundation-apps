@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Highlight = require('react-highlight/optimized');
 var StaticNotification = require('./static');
 var AdvancedNotification = require('./advanced');
@@ -29,4 +29,4 @@ var NotificationDocs = React.createClass({
   }
 });
 
-module.exports = NotificationDocs;  
+module.exports = NotificationDocs;

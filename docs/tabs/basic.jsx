@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Tabs = require('../../lib/tabs');
 
 var BasicTabs = React.createClass({

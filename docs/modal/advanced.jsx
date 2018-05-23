@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Modal = require('../../lib/modal');
 var Trigger = require('../../lib/trigger');
 
@@ -8,7 +8,7 @@ var AdvancedModal = React.createClass({
       <div>
         <Trigger open='advancedModal'>
           <a className="button">Open Modal</a>
-        </Trigger>  
+        </Trigger>
         <Modal id='advancedModal' overlay={false} animationIn='slideInDown' animationOut='slideOutUp'>
           <div className="grid-block vertical">
             <div className="shrink grid-content">
@@ -22,7 +22,7 @@ var AdvancedModal = React.createClass({
                 <a className="button">Cancel</a>
               </Trigger>
             </div>
-          </div>  
+          </div>
         </Modal>
       </div>
     );

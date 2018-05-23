@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Notification = require('../../lib/notification');
 var Trigger = require('../../lib/trigger')
 

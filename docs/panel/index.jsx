@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Highlight = require('react-highlight/optimized');
 var FixedPanel = require('./fixed-panel');
 var Panel = require('../../lib/panel');
@@ -13,29 +13,29 @@ var PanelDocs = React.createClass({
             <a className='close-button'>&times;</a>
           </Trigger>
           Top Panel content
-        </Panel> 
+        </Panel>
         <Panel id='example-right-panel' position='right'>
           <Trigger close=''>
             <a className='close-button'>&times;</a>
           </Trigger>
           Right Panel content
-        </Panel> 
+        </Panel>
         <Panel id='example-bottom-panel' position='bottom'>
           <Trigger close=''>
             <a className='close-button'>&times;</a>
           </Trigger>
           Bottom Panel content
-        </Panel> 
+        </Panel>
         <Panel id='example-left-panel'>
           <Trigger close=''>
             <a className='close-button'>&times;</a>
           </Trigger>
           Basic Left Panel content
-        </Panel> 
+        </Panel>
         <h2>Panel</h2>
         <h4 className='subheader'>
           panel
-        </h4> 
+        </h4>
         <hr />
         <div className='grid-block'>
           <Trigger hardToggle='example-top-panel'>
@@ -58,7 +58,7 @@ var PanelDocs = React.createClass({
         <div className='grid-block'>
           <div className='grid-content'>
             <Highlight innerHTML={true} languages={['xml']}>
-              {require('./basic.md')} 
+              {require('./basic.md')}
             </Highlight>
           </div>
           <div className='grid-content'>
@@ -74,7 +74,7 @@ var PanelDocs = React.createClass({
         <div className='grid-block'>
           <div className='grid-content'>
             <Highlight innerHTML={true} languages={['xml']}>
-              {require('./trigger.md')} 
+              {require('./trigger.md')}
             </Highlight>
           </div>
           <div className='grid-content'>

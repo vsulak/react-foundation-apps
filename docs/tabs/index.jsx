@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Highlight = require('react-highlight/optimized');
 var BasicTabs = require('./basic');
 

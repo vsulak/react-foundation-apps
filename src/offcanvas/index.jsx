@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var classnames = require('classnames');
 // var LayerMixin = require('react-layer-mixin');
 var foundationApi = require('../utils/foundation-api');

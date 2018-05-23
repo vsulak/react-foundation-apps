@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var foundationApi = require('../utils/foundation-api');
 var Notification = require('./notification');
 var Animation = require('../utils/animation');
@@ -53,7 +53,7 @@ class NotificationSet extends React.Component {
     }.bind(this));
     return (
         <div>{notifications}</div>
-    )  
+    )
   }
 }
 

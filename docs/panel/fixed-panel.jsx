@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Panel = require('../../lib/panel');
 var Trigger = require('../../lib/trigger');
 

@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Router = require('react-router');
 var Link = Router.Link;
 var Route = Router.Route;

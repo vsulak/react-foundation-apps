@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var foundationApi = require('../utils/foundation-api');
 
 class ActionSheet extends React.Component {

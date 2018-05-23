@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Highlight = require('react-highlight/optimized');
 var Trigger = require('../../lib/trigger');
 
@@ -9,9 +9,9 @@ var OffcanvasDocs = React.createClass({
         <h2>Off-canvas</h2>
         <h4 className='subheader'>
           A container that is hidden off-screen and pushes its way in view when needed.
-        </h4> 
+        </h4>
         <hr />
-        
+
         <div className='grid-block'>
           <Trigger hardToggle='top-offcanvas'>
             <a className='button'>Top Off-canvas</a>
@@ -42,7 +42,7 @@ var OffcanvasDocs = React.createClass({
           </div>
         </div>
         <hr />
-        
+
       </div>
     );
   }

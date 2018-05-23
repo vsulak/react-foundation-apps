@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var classnames = require('classnames');
 var Animation = require('../utils/animation');
 var foundationApi = require('../utils/foundation-api');

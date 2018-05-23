@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Modal = require('../../lib/modal');
 var Trigger = require('../../lib/trigger');
 

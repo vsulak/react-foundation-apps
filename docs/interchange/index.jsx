@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var BasicInterchange = require('./basic');
 var Highlight = require('react-highlight/optimized');
 
@@ -10,7 +10,7 @@ var InterchangeDocs = React.createClass({
         <h4 className='subheader'>A simple JavaScript solution for responsive images and content. Interchange uses media queries to dynamically load responsive content that is appropriate for different users' browsers</h4>
         <hr />
           <p>Resize the page to see the content change.</p>
-          <BasicInterchange /> 
+          <BasicInterchange />
         <hr/>
         <h3>Basic</h3>
         <div className='grid-block'>
@@ -22,7 +22,7 @@ var InterchangeDocs = React.createClass({
           <div className='grid-content'>
             <BasicInterchange />
           </div>
-        </div> 
+        </div>
       </div>
     );
   }

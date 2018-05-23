@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var BasicAccordion = require('./basic');
 var AdvancedAccordion = require('./advanced');
 var Highlight = require('react-highlight/optimized');
@@ -26,7 +26,7 @@ var Accordion = React.createClass({
           </div>
         </div>
         <hr />
-        
+
         <h3>Advanced</h3>
         <div className='grid-block'>
           <div className='grid-content' >

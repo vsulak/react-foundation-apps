@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var ReactDOM = require('react-dom');
 var foundationApi = require('../utils/foundation-api');
 var PopupToggle = require('../popup/toggle');

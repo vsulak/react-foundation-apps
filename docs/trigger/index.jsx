@@ -1,4 +1,4 @@
- var React = require('react');
+ import React from 'react';
 var Highlight = require('react-highlight/optimized');
 
 var TriggersDocs = React.createClass({
@@ -15,7 +15,7 @@ var TriggersDocs = React.createClass({
         </Highlight>
         <hr />
         <h3>Close</h3>
-        <p>Close the target component</p> 
+        <p>Close the target component</p>
         <Highlight innerHTML={true} languages={['xml']}>
           {require('./close.md')}
         </Highlight>

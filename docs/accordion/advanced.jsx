@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var Accordion = require('../../lib/accordion');
 
 var MultiSelect = React.createClass({

@@ -34,7 +34,7 @@ var Accordion = require('react-foundation-apps/lib/accordion');
 ### Example
 
 ```javascript
-var React = require('react');
+import React from 'react';
 var Accordion = require('react-foundation-apps/lib/accordion');
 
 var SampleAccordion = React.createClass({
