@@ -1,5 +1,5 @@
-var React = require('react');
-var Animation = require('../utils/animation');
+import React from 'react';
+import Animation from '../utils/animation';
 var foundationApi = require('../utils/foundation-api');
 
 class Modal extends React.Component {
